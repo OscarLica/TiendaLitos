@@ -74,7 +74,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Tienda Listos Todos los derechos reservados</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Tienda Listos Todos los derechos reservados, eleborado por (Candida Mendoza y Lisbeth Mercado)</p>
             </footer>
         </div>
 

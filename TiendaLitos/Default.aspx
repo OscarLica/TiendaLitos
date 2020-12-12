@@ -9,7 +9,7 @@
         <div class="col-md-6">
             <div class="jumbotron">
                 <h2>Sistema de Compra/Venta Tienda Litos</h2>
-                <p class="lead">Bienvenido al sistema de compra/venta Tienda Listos.</p>
+                <p class="lead">Bienvenido al sistema de compra/venta Tienda Listos, !siempre a la moda!</p>
                
             </div>
         </div>
