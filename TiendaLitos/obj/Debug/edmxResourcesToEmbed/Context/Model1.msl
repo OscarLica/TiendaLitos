@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TiendaLitosModelStoreContainer" CdmEntityContainer="TiendaLitosEntities">
+    <EntitySetMapping Name="TbArticulo">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbArticulo">
+        <MappingFragment StoreEntitySet="TbArticulo">
+          <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+          <ScalarProperty Name="NombreArticulo" ColumnName="NombreArticulo" />
+          <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+          <ScalarProperty Name="IdSubCategoria" ColumnName="IdSubCategoria" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbArticuloBaja">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbArticuloBaja">
+        <MappingFragment StoreEntitySet="TbArticuloBaja">
+          <ScalarProperty Name="IdArticulosBaja" ColumnName="IdArticulosBaja" />
+          <ScalarProperty Name="IdTipoMovimimiento" ColumnName="IdTipoMovimimiento" />
+          <ScalarProperty Name="IdArticuloBodega" ColumnName="IdArticuloBodega" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="NombreMedida" ColumnName="NombreMedida" />
+          <ScalarProperty Name="TotalUnidades" ColumnName="TotalUnidades" />
+          <ScalarProperty Name="DescripciónArticuloBaja" ColumnName="DescripciónArticuloBaja" />
+          <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbArticuloBodega">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbArticuloBodega">
+        <MappingFragment StoreEntitySet="TbArticuloBodega">
+          <ScalarProperty Name="IdArticuloBodega" ColumnName="IdArticuloBodega" />
+          <ScalarProperty Name="IdBodega" ColumnName="IdBodega" />
+          <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+          <ScalarProperty Name="IdMedida" ColumnName="IdMedida" />
+          <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+          <ScalarProperty Name="IdColor" ColumnName="IdColor" />
+          <ScalarProperty Name="IdTalla" ColumnName="IdTalla" />
+          <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+          <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
+          <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="DescuentoMaximo" ColumnName="DescuentoMaximo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbBodega">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbBodega">
+        <MappingFragment StoreEntitySet="TbBodega">
+          <ScalarProperty Name="IdBodega" ColumnName="IdBodega" />
+          <ScalarProperty Name="Bodega" ColumnName="Bodega" />
+          <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbCategoria">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbCategoria">
+        <MappingFragment StoreEntitySet="TbCategoria">
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbColor">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbColor">
+        <MappingFragment StoreEntitySet="TbColor">
+          <ScalarProperty Name="IdColor" ColumnName="IdColor" />
+          <ScalarProperty Name="NombreColor" ColumnName="NombreColor" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbCompra">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbCompra">
+        <MappingFragment StoreEntitySet="TbCompra">
+          <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+          <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Iva" ColumnName="Iva" />
+          <ScalarProperty Name="Anular" ColumnName="Anular" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="NoFactura" ColumnName="NoFactura" />
+          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbConfiguración">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbConfiguración">
+        <MappingFragment StoreEntitySet="TbConfiguración">
+          <ScalarProperty Name="IdConfiguración" ColumnName="IdConfiguración" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="NombreTienda" ColumnName="NombreTienda" />
+          <ScalarProperty Name="CofiguraciónDelLema" ColumnName="CofiguraciónDelLema" />
+          <ScalarProperty Name="ConfTelefono" ColumnName="ConfTelefono" />
+          <ScalarProperty Name="ConfDireccion" ColumnName="ConfDireccion" />
+          <ScalarProperty Name="ConfEncabezadoFactura" ColumnName="ConfEncabezadoFactura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbDevoluciònVenta">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbDevoluciònVenta">
+        <MappingFragment StoreEntitySet="TbDevoluciònVenta">
+          <ScalarProperty Name="IdDevoluciònVenta" ColumnName="IdDevoluciònVenta" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+          <ScalarProperty Name="NoFactura" ColumnName="NoFactura" />
+          <ScalarProperty Name="FechaDevoluciòn" ColumnName="FechaDevoluciòn" />
+          <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="DescripciònDevoluciòn" ColumnName="DescripciònDevoluciòn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbMarca">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbMarca">
+        <MappingFragment StoreEntitySet="TbMarca">
+          <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+          <ScalarProperty Name="NombreMarca" ColumnName="NombreMarca" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbMedida">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbMedida">
+        <MappingFragment StoreEntitySet="TbMedida">
+          <ScalarProperty Name="IdMedida" ColumnName="IdMedida" />
+          <ScalarProperty Name="NombreMedida" ColumnName="NombreMedida" />
+          <ScalarProperty Name="PrecioMedida" ColumnName="PrecioMedida" />
+          <ScalarProperty Name="UdidadesEquivalente" ColumnName="UdidadesEquivalente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbMovimientoArticulo">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbMovimientoArticulo">
+        <MappingFragment StoreEntitySet="TbMovimientoArticulo">
+          <ScalarProperty Name="IdMovimientoArticulo" ColumnName="IdMovimientoArticulo" />
+          <ScalarProperty Name="IdTipoMovimiento" ColumnName="IdTipoMovimiento" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdArticuloBodega" ColumnName="IdArticuloBodega" />
+          <ScalarProperty Name="FechaMovimiento" ColumnName="FechaMovimiento" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="TotalMedida" ColumnName="TotalMedida" />
+          <ScalarProperty Name="DescripciónMovimientoArticulo" ColumnName="DescripciónMovimientoArticulo" />
+          <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbPromoción">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbPromoción">
+        <MappingFragment StoreEntitySet="TbPromoción">
+          <ScalarProperty Name="IdPromoción" ColumnName="IdPromoción" />
+          <ScalarProperty Name="NombrePromoción" ColumnName="NombrePromoción" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="InicioPromoción" ColumnName="InicioPromoción" />
+          <ScalarProperty Name="FinPromoción" ColumnName="FinPromoción" />
+          <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbProveedor">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbProveedor">
+        <MappingFragment StoreEntitySet="TbProveedor">
+          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+          <ScalarProperty Name="NombreEmpresa" ColumnName="NombreEmpresa" />
+          <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+          <ScalarProperty Name="NombreConctato" ColumnName="NombreConctato" />
+          <ScalarProperty Name="Tefonono" ColumnName="Tefonono" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Municipio" ColumnName="Municipio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbRol">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbRol">
+        <MappingFragment StoreEntitySet="TbRol">
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+          <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbSubCategoria">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbSubCategoria">
+        <MappingFragment StoreEntitySet="TbSubCategoria">
+          <ScalarProperty Name="IdSubCategoria" ColumnName="IdSubCategoria" />
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbTalla">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbTalla">
+        <MappingFragment StoreEntitySet="TbTalla">
+          <ScalarProperty Name="IdTalla" ColumnName="IdTalla" />
+          <ScalarProperty Name="NombreTalla" ColumnName="NombreTalla" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbTipoMovimiento">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbTipoMovimiento">
+        <MappingFragment StoreEntitySet="TbTipoMovimiento">
+          <ScalarProperty Name="IdTipoMovimiento" ColumnName="IdTipoMovimiento" />
+          <ScalarProperty Name="NombreMovimiento" ColumnName="NombreMovimiento" />
+          <ScalarProperty Name="DescripciónTipoMovimiento" ColumnName="DescripciónTipoMovimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbUsuario">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbUsuario">
+        <MappingFragment StoreEntitySet="TbUsuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbVenta">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbVenta">
+        <MappingFragment StoreEntitySet="TbVenta">
+          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdPromoción" ColumnName="IdPromoción" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Iva" ColumnName="Iva" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Anular" ColumnName="Anular" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbRolUsuario">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbRolUsuario">
+        <MappingFragment StoreEntitySet="TbRolUsuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbDetalleCompra">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbDetalleCompra">
+        <MappingFragment StoreEntitySet="TbDetalleCompra">
+          <ScalarProperty Name="IdDetalleCompra" ColumnName="IdDetalleCompra" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+          <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbDetalleVenta">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbDetalleVenta">
+        <MappingFragment StoreEntitySet="TbDetalleVenta">
+          <ScalarProperty Name="IdDetalleVenta" ColumnName="IdDetalleVenta" />
+          <ScalarProperty Name="Cambio" ColumnName="Cambio" />
+          <ScalarProperty Name="Pago" ColumnName="Pago" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="PrecioPorUnidad" ColumnName="PrecioPorUnidad" />
+          <ScalarProperty Name="UdMedidaVenta" ColumnName="UdMedidaVenta" />
+          <ScalarProperty Name="DescripciónArticulo" ColumnName="DescripciónArticulo" />
+          <ScalarProperty Name="IdArticuloBodega" ColumnName="IdArticuloBodega" />
+          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

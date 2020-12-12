@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0c7604468e0448459071422dd715a39b" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="TiendaLitosModel.TbArticulo" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbArticuloBaja" Width="1.5" PointX="12.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbArticuloBodega" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbBodega" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbCategoria" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbColor" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbCompra" Width="1.5" PointX="10.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbConfiguración" Width="1.5" PointX="10.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbDevoluciònVenta" Width="1.5" PointX="10.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbMarca" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbMedida" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbMovimientoArticulo" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbPromoción" Width="1.5" PointX="6" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbProveedor" Width="1.5" PointX="8.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbRol" Width="1.5" PointX="11.25" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbSubCategoria" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbTalla" Width="1.5" PointX="5.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbTipoMovimiento" Width="1.5" PointX="7.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbUsuario" Width="1.5" PointX="8.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbVenta" Width="1.5" PointX="8.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbRolUsuario" Width="1.5" PointX="13.5" PointY="10.875" IsExpanded="true" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbArticulo_TbSubCategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbArticuloBodega_TbArticulo" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbDevoluciònVenta_TbArticulo" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbMovimientoArticulo_TbArticulo" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbArticuloBaja_TbArticuloBodega" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbArticuloBaja_TbTipoMovimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbArticuloBodega_TbBodega" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbArticuloBodega_TbColor" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbArticuloBodega_TbMarca" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbArticuloBodega_TbMedida" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbArticuloBodega_TbTalla" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbMovimientoArticulo_TbArticuloBodega" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbSubCategoria_TbCategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbCompra_TbProveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbCompra_TbUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbConfiguración_TbUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbDevoluciònVenta_TbUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbDevoluciònVenta_TbVenta" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbMovimientoArticulo_TbTipoMovimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbVenta_TbPromoción" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbRolUsuario_TbRol1" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbRolUsuario_TbUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbVenta_TbUsuario" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbDetalleCompra" Width="1.5" PointX="12.75" PointY="13.625" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbDetalleCompra_TbCompra1" />
+        <EntityTypeShape EntityType="TiendaLitosModel.TbDetalleVenta" Width="1.5" PointX="13.5" PointY="17.125" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbDetalleVenta_TbArticuloBodega" />
+        <AssociationConnector Association="TiendaLitosModel.FK_TbDetalleVenta_TbVenta1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

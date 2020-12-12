@@ -1,0 +1,4 @@
+C:\Users\1234\source\repos\TiendaLitos\CapaDatos\bin\Debug\netstandard2.0\CapaEntidades.dll
+C:\Users\1234\source\repos\TiendaLitos\CapaDatos\obj\Debug\netstandard2.0\CapaDatos.csprojAssemblyReference.cache
+C:\Users\1234\source\repos\TiendaLitos\CapaDatos\obj\Debug\netstandard2.0\CapaDatos.AssemblyInfoInputs.cache
+C:\Users\1234\source\repos\TiendaLitos\CapaDatos\obj\Debug\netstandard2.0\CapaDatos.AssemblyInfo.cs

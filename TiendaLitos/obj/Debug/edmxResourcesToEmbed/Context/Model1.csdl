@@ -1,0 +1,747 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TiendaLitosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TbArticulo">
+    <Key>
+      <PropertyRef Name="IdArticulo" />
+    </Key>
+    <Property Name="IdArticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreArticulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Descripción" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdSubCategoria" Type="Int32" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="TbSubCategoria" Relationship="Self.FK_TbArticulo_TbSubCategoria" FromRole="TbArticulo" ToRole="TbSubCategoria" />
+    <NavigationProperty Name="TbArticuloBodega" Relationship="Self.FK_TbArticuloBodega_TbArticulo" FromRole="TbArticulo" ToRole="TbArticuloBodega" />
+    <NavigationProperty Name="TbDevoluciònVenta" Relationship="Self.FK_TbDevoluciònVenta_TbArticulo" FromRole="TbArticulo" ToRole="TbDevoluciònVenta" />
+    <NavigationProperty Name="TbMovimientoArticulo" Relationship="Self.FK_TbMovimientoArticulo_TbArticulo" FromRole="TbArticulo" ToRole="TbMovimientoArticulo" />
+  </EntityType>
+  <EntityType Name="TbArticuloBaja">
+    <Key>
+      <PropertyRef Name="IdArticulosBaja" />
+    </Key>
+    <Property Name="IdArticulosBaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdTipoMovimimiento" Type="Int32" />
+    <Property Name="IdArticuloBodega" Type="Int32" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="NombreMedida" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalUnidades" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DescripciónArticuloBaja" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdArticulo" Type="Int32" />
+    <NavigationProperty Name="TbArticuloBodega" Relationship="Self.FK_TbArticuloBaja_TbArticuloBodega" FromRole="TbArticuloBaja" ToRole="TbArticuloBodega" />
+    <NavigationProperty Name="TbTipoMovimiento" Relationship="Self.FK_TbArticuloBaja_TbTipoMovimiento" FromRole="TbArticuloBaja" ToRole="TbTipoMovimiento" />
+  </EntityType>
+  <EntityType Name="TbArticuloBodega">
+    <Key>
+      <PropertyRef Name="IdArticuloBodega" />
+    </Key>
+    <Property Name="IdArticuloBodega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdBodega" Type="Int32" />
+    <Property Name="IdArticulo" Type="Int32" />
+    <Property Name="IdMedida" Type="Int32" />
+    <Property Name="IdMarca" Type="Int32" />
+    <Property Name="IdColor" Type="Int32" />
+    <Property Name="IdTalla" Type="Int32" />
+    <Property Name="Existencia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrecioCompra" Type="Double" />
+    <Property Name="PrecioVenta" Type="Double" />
+    <Property Name="Descuento" Type="Double" />
+    <Property Name="DescuentoMaximo" Type="Double" />
+    <NavigationProperty Name="TbArticulo" Relationship="Self.FK_TbArticuloBodega_TbArticulo" FromRole="TbArticuloBodega" ToRole="TbArticulo" />
+    <NavigationProperty Name="TbArticuloBaja" Relationship="Self.FK_TbArticuloBaja_TbArticuloBodega" FromRole="TbArticuloBodega" ToRole="TbArticuloBaja" />
+    <NavigationProperty Name="TbBodega" Relationship="Self.FK_TbArticuloBodega_TbBodega" FromRole="TbArticuloBodega" ToRole="TbBodega" />
+    <NavigationProperty Name="TbColor" Relationship="Self.FK_TbArticuloBodega_TbColor" FromRole="TbArticuloBodega" ToRole="TbColor" />
+    <NavigationProperty Name="TbMarca" Relationship="Self.FK_TbArticuloBodega_TbMarca" FromRole="TbArticuloBodega" ToRole="TbMarca" />
+    <NavigationProperty Name="TbMedida" Relationship="Self.FK_TbArticuloBodega_TbMedida" FromRole="TbArticuloBodega" ToRole="TbMedida" />
+    <NavigationProperty Name="TbTalla" Relationship="Self.FK_TbArticuloBodega_TbTalla" FromRole="TbArticuloBodega" ToRole="TbTalla" />
+    <NavigationProperty Name="TbMovimientoArticulo" Relationship="Self.FK_TbMovimientoArticulo_TbArticuloBodega" FromRole="TbArticuloBodega" ToRole="TbMovimientoArticulo" />
+    <NavigationProperty Name="TbDetalleVenta" Relationship="TiendaLitosModel.FK_TbDetalleVenta_TbArticuloBodega" FromRole="TbArticuloBodega" ToRole="TbDetalleVenta" />
+  </EntityType>
+  <EntityType Name="TbBodega">
+    <Key>
+      <PropertyRef Name="IdBodega" />
+    </Key>
+    <Property Name="IdBodega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bodega" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Descripción" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TbArticuloBodega" Relationship="Self.FK_TbArticuloBodega_TbBodega" FromRole="TbBodega" ToRole="TbArticuloBodega" />
+  </EntityType>
+  <EntityType Name="TbCategoria">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="TbSubCategoria" Relationship="Self.FK_TbSubCategoria_TbCategoria" FromRole="TbCategoria" ToRole="TbSubCategoria" />
+  </EntityType>
+  <EntityType Name="TbColor">
+    <Key>
+      <PropertyRef Name="IdColor" />
+    </Key>
+    <Property Name="IdColor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="TbArticuloBodega" Relationship="Self.FK_TbArticuloBodega_TbColor" FromRole="TbColor" ToRole="TbArticuloBodega" />
+  </EntityType>
+  <EntityType Name="TbCompra">
+    <Key>
+      <PropertyRef Name="IdCompra" />
+    </Key>
+    <Property Name="IdCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCompra" Type="DateTime" Precision="0" />
+    <Property Name="SubTotal" Type="Double" />
+    <Property Name="Iva" Type="Double" />
+    <Property Name="Anular" Type="Boolean" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="NoFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdProveedor" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <NavigationProperty Name="TbProveedor" Relationship="Self.FK_TbCompra_TbProveedor" FromRole="TbCompra" ToRole="TbProveedor" />
+    <NavigationProperty Name="TbUsuario" Relationship="Self.FK_TbCompra_TbUsuario" FromRole="TbCompra" ToRole="TbUsuario" />
+    <NavigationProperty Name="TbDetalleCompra" Relationship="TiendaLitosModel.FK_TbDetalleCompra_TbCompra1" FromRole="TbCompra" ToRole="TbDetalleCompra" />
+  </EntityType>
+  <EntityType Name="TbConfiguración">
+    <Key>
+      <PropertyRef Name="IdConfiguración" />
+    </Key>
+    <Property Name="IdConfiguración" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="NombreTienda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CofiguraciónDelLema" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfTelefono" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ConfDireccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfEncabezadoFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TbUsuario" Relationship="Self.FK_TbConfiguración_TbUsuario" FromRole="TbConfiguración" ToRole="TbUsuario" />
+  </EntityType>
+  <EntityType Name="TbDevoluciònVenta">
+    <Key>
+      <PropertyRef Name="IdDevoluciònVenta" />
+    </Key>
+    <Property Name="IdDevoluciònVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdVenta" Type="Int32" />
+    <Property Name="NoFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaDevoluciòn" Type="DateTime" Precision="0" />
+    <Property Name="IdArticulo" Type="Int32" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="DescripciònDevoluciòn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TbArticulo" Relationship="Self.FK_TbDevoluciònVenta_TbArticulo" FromRole="TbDevoluciònVenta" ToRole="TbArticulo" />
+    <NavigationProperty Name="TbUsuario" Relationship="Self.FK_TbDevoluciònVenta_TbUsuario" FromRole="TbDevoluciònVenta" ToRole="TbUsuario" />
+    <NavigationProperty Name="TbVenta" Relationship="Self.FK_TbDevoluciònVenta_TbVenta" FromRole="TbDevoluciònVenta" ToRole="TbVenta" />
+  </EntityType>
+  <EntityType Name="TbMarca">
+    <Key>
+      <PropertyRef Name="IdMarca" />
+    </Key>
+    <Property Name="IdMarca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreMarca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="TbArticuloBodega" Relationship="Self.FK_TbArticuloBodega_TbMarca" FromRole="TbMarca" ToRole="TbArticuloBodega" />
+  </EntityType>
+  <EntityType Name="TbMedida">
+    <Key>
+      <PropertyRef Name="IdMedida" />
+    </Key>
+    <Property Name="IdMedida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreMedida" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrecioMedida" Type="Double" />
+    <Property Name="UdidadesEquivalente" Type="Double" />
+    <NavigationProperty Name="TbArticuloBodega" Relationship="Self.FK_TbArticuloBodega_TbMedida" FromRole="TbMedida" ToRole="TbArticuloBodega" />
+  </EntityType>
+  <EntityType Name="TbMovimientoArticulo">
+    <Key>
+      <PropertyRef Name="IdMovimientoArticulo" />
+    </Key>
+    <Property Name="IdMovimientoArticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdTipoMovimiento" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdArticuloBodega" Type="Int32" />
+    <Property Name="FechaMovimiento" Type="DateTime" Precision="0" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="TotalMedida" Type="Double" />
+    <Property Name="DescripciónMovimientoArticulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdArticulo" Type="Int32" />
+    <NavigationProperty Name="TbArticulo" Relationship="Self.FK_TbMovimientoArticulo_TbArticulo" FromRole="TbMovimientoArticulo" ToRole="TbArticulo" />
+    <NavigationProperty Name="TbArticuloBodega" Relationship="Self.FK_TbMovimientoArticulo_TbArticuloBodega" FromRole="TbMovimientoArticulo" ToRole="TbArticuloBodega" />
+    <NavigationProperty Name="TbTipoMovimiento" Relationship="Self.FK_TbMovimientoArticulo_TbTipoMovimiento" FromRole="TbMovimientoArticulo" ToRole="TbTipoMovimiento" />
+  </EntityType>
+  <EntityType Name="TbPromoción">
+    <Key>
+      <PropertyRef Name="IdPromoción" />
+    </Key>
+    <Property Name="IdPromoción" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombrePromoción" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Descuento" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="InicioPromoción" Type="DateTime" Precision="0" />
+    <Property Name="FinPromoción" Type="DateTime" Precision="0" />
+    <Property Name="Descripción" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TbVenta" Relationship="Self.FK_TbVenta_TbPromoción" FromRole="TbPromoción" ToRole="TbVenta" />
+  </EntityType>
+  <EntityType Name="TbProveedor">
+    <Key>
+      <PropertyRef Name="IdProveedor" />
+    </Key>
+    <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreEmpresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Dirección" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NombreConctato" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tefonono" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Municipio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TbCompra" Relationship="Self.FK_TbCompra_TbProveedor" FromRole="TbProveedor" ToRole="TbCompra" />
+  </EntityType>
+  <EntityType Name="TbRol">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreRol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Descripción" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TbRolUsuario" Relationship="Self.FK_TbRolUsuario_TbRol1" FromRole="TbRol" ToRole="TbRolUsuario" />
+  </EntityType>
+  <EntityType Name="TbSubCategoria">
+    <Key>
+      <PropertyRef Name="IdSubCategoria" />
+    </Key>
+    <Property Name="IdSubCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCategoria" Type="Int32" />
+    <Property Name="Descripción" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="TbArticulo" Relationship="Self.FK_TbArticulo_TbSubCategoria" FromRole="TbSubCategoria" ToRole="TbArticulo" />
+    <NavigationProperty Name="TbCategoria" Relationship="Self.FK_TbSubCategoria_TbCategoria" FromRole="TbSubCategoria" ToRole="TbCategoria" />
+  </EntityType>
+  <EntityType Name="TbTalla">
+    <Key>
+      <PropertyRef Name="IdTalla" />
+    </Key>
+    <Property Name="IdTalla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreTalla" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="TbArticuloBodega" Relationship="Self.FK_TbArticuloBodega_TbTalla" FromRole="TbTalla" ToRole="TbArticuloBodega" />
+  </EntityType>
+  <EntityType Name="TbTipoMovimiento">
+    <Key>
+      <PropertyRef Name="IdTipoMovimiento" />
+    </Key>
+    <Property Name="IdTipoMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreMovimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DescripciónTipoMovimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TbArticuloBaja" Relationship="Self.FK_TbArticuloBaja_TbTipoMovimiento" FromRole="TbTipoMovimiento" ToRole="TbArticuloBaja" />
+    <NavigationProperty Name="TbMovimientoArticulo" Relationship="Self.FK_TbMovimientoArticulo_TbTipoMovimiento" FromRole="TbTipoMovimiento" ToRole="TbMovimientoArticulo" />
+  </EntityType>
+  <EntityType Name="TbUsuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TbCompra" Relationship="Self.FK_TbCompra_TbUsuario" FromRole="TbUsuario" ToRole="TbCompra" />
+    <NavigationProperty Name="TbConfiguración" Relationship="Self.FK_TbConfiguración_TbUsuario" FromRole="TbUsuario" ToRole="TbConfiguración" />
+    <NavigationProperty Name="TbDevoluciònVenta" Relationship="Self.FK_TbDevoluciònVenta_TbUsuario" FromRole="TbUsuario" ToRole="TbDevoluciònVenta" />
+    <NavigationProperty Name="TbRolUsuario" Relationship="Self.FK_TbRolUsuario_TbUsuario" FromRole="TbUsuario" ToRole="TbRolUsuario" />
+    <NavigationProperty Name="TbVenta" Relationship="Self.FK_TbVenta_TbUsuario" FromRole="TbUsuario" ToRole="TbVenta" />
+  </EntityType>
+  <EntityType Name="TbVenta">
+    <Key>
+      <PropertyRef Name="IdVenta" />
+    </Key>
+    <Property Name="IdVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdPromoción" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Iva" Type="Double" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="Anular" Type="Boolean" />
+    <Property Name="SubTotal" Type="Double" />
+    <Property Name="NombreCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TbDevoluciònVenta" Relationship="Self.FK_TbDevoluciònVenta_TbVenta" FromRole="TbVenta" ToRole="TbDevoluciònVenta" />
+    <NavigationProperty Name="TbPromoción" Relationship="Self.FK_TbVenta_TbPromoción" FromRole="TbVenta" ToRole="TbPromoción" />
+    <NavigationProperty Name="TbUsuario" Relationship="Self.FK_TbVenta_TbUsuario" FromRole="TbVenta" ToRole="TbUsuario" />
+    <NavigationProperty Name="TbDetalleVenta" Relationship="TiendaLitosModel.FK_TbDetalleVenta_TbVenta1" FromRole="TbVenta" ToRole="TbDetalleVenta" />
+  </EntityType>
+  <EntityType Name="TbRolUsuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdRol" Type="Int32" />
+    <NavigationProperty Name="TbRol" Relationship="Self.FK_TbRolUsuario_TbRol1" FromRole="TbRolUsuario" ToRole="TbRol" />
+    <NavigationProperty Name="TbUsuario" Relationship="Self.FK_TbRolUsuario_TbUsuario" FromRole="TbRolUsuario" ToRole="TbUsuario" />
+  </EntityType>
+  <Association Name="FK_TbArticulo_TbSubCategoria">
+    <End Role="TbSubCategoria" Type="Self.TbSubCategoria" Multiplicity="0..1" />
+    <End Role="TbArticulo" Type="Self.TbArticulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbSubCategoria">
+        <PropertyRef Name="IdSubCategoria" />
+      </Principal>
+      <Dependent Role="TbArticulo">
+        <PropertyRef Name="IdSubCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbArticuloBodega_TbArticulo">
+    <End Role="TbArticulo" Type="Self.TbArticulo" Multiplicity="0..1" />
+    <End Role="TbArticuloBodega" Type="Self.TbArticuloBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbArticulo">
+        <PropertyRef Name="IdArticulo" />
+      </Principal>
+      <Dependent Role="TbArticuloBodega">
+        <PropertyRef Name="IdArticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbDevoluciònVenta_TbArticulo">
+    <End Role="TbArticulo" Type="Self.TbArticulo" Multiplicity="0..1" />
+    <End Role="TbDevoluciònVenta" Type="Self.TbDevoluciònVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbArticulo">
+        <PropertyRef Name="IdArticulo" />
+      </Principal>
+      <Dependent Role="TbDevoluciònVenta">
+        <PropertyRef Name="IdArticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbMovimientoArticulo_TbArticulo">
+    <End Role="TbArticulo" Type="Self.TbArticulo" Multiplicity="0..1" />
+    <End Role="TbMovimientoArticulo" Type="Self.TbMovimientoArticulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbArticulo">
+        <PropertyRef Name="IdArticulo" />
+      </Principal>
+      <Dependent Role="TbMovimientoArticulo">
+        <PropertyRef Name="IdArticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbArticuloBaja_TbArticuloBodega">
+    <End Role="TbArticuloBodega" Type="Self.TbArticuloBodega" Multiplicity="0..1" />
+    <End Role="TbArticuloBaja" Type="Self.TbArticuloBaja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbArticuloBodega">
+        <PropertyRef Name="IdArticuloBodega" />
+      </Principal>
+      <Dependent Role="TbArticuloBaja">
+        <PropertyRef Name="IdArticuloBodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbArticuloBaja_TbTipoMovimiento">
+    <End Role="TbTipoMovimiento" Type="Self.TbTipoMovimiento" Multiplicity="0..1" />
+    <End Role="TbArticuloBaja" Type="Self.TbArticuloBaja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbTipoMovimiento">
+        <PropertyRef Name="IdTipoMovimiento" />
+      </Principal>
+      <Dependent Role="TbArticuloBaja">
+        <PropertyRef Name="IdTipoMovimimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbArticuloBodega_TbBodega">
+    <End Role="TbBodega" Type="Self.TbBodega" Multiplicity="0..1" />
+    <End Role="TbArticuloBodega" Type="Self.TbArticuloBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbBodega">
+        <PropertyRef Name="IdBodega" />
+      </Principal>
+      <Dependent Role="TbArticuloBodega">
+        <PropertyRef Name="IdBodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbArticuloBodega_TbColor">
+    <End Role="TbColor" Type="Self.TbColor" Multiplicity="0..1" />
+    <End Role="TbArticuloBodega" Type="Self.TbArticuloBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbColor">
+        <PropertyRef Name="IdColor" />
+      </Principal>
+      <Dependent Role="TbArticuloBodega">
+        <PropertyRef Name="IdColor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbArticuloBodega_TbMarca">
+    <End Role="TbMarca" Type="Self.TbMarca" Multiplicity="0..1" />
+    <End Role="TbArticuloBodega" Type="Self.TbArticuloBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbMarca">
+        <PropertyRef Name="IdMarca" />
+      </Principal>
+      <Dependent Role="TbArticuloBodega">
+        <PropertyRef Name="IdMarca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbArticuloBodega_TbMedida">
+    <End Role="TbMedida" Type="Self.TbMedida" Multiplicity="0..1" />
+    <End Role="TbArticuloBodega" Type="Self.TbArticuloBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbMedida">
+        <PropertyRef Name="IdMedida" />
+      </Principal>
+      <Dependent Role="TbArticuloBodega">
+        <PropertyRef Name="IdMedida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbArticuloBodega_TbTalla">
+    <End Role="TbTalla" Type="Self.TbTalla" Multiplicity="0..1" />
+    <End Role="TbArticuloBodega" Type="Self.TbArticuloBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbTalla">
+        <PropertyRef Name="IdTalla" />
+      </Principal>
+      <Dependent Role="TbArticuloBodega">
+        <PropertyRef Name="IdTalla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbMovimientoArticulo_TbArticuloBodega">
+    <End Role="TbArticuloBodega" Type="Self.TbArticuloBodega" Multiplicity="0..1" />
+    <End Role="TbMovimientoArticulo" Type="Self.TbMovimientoArticulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbArticuloBodega">
+        <PropertyRef Name="IdArticuloBodega" />
+      </Principal>
+      <Dependent Role="TbMovimientoArticulo">
+        <PropertyRef Name="IdArticuloBodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbSubCategoria_TbCategoria">
+    <End Role="TbCategoria" Type="Self.TbCategoria" Multiplicity="0..1" />
+    <End Role="TbSubCategoria" Type="Self.TbSubCategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbCategoria">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="TbSubCategoria">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbCompra_TbProveedor">
+    <End Role="TbProveedor" Type="Self.TbProveedor" Multiplicity="0..1" />
+    <End Role="TbCompra" Type="Self.TbCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbProveedor">
+        <PropertyRef Name="IdProveedor" />
+      </Principal>
+      <Dependent Role="TbCompra">
+        <PropertyRef Name="IdProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbCompra_TbUsuario">
+    <End Role="TbUsuario" Type="Self.TbUsuario" Multiplicity="0..1" />
+    <End Role="TbCompra" Type="Self.TbCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbUsuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="TbCompra">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbConfiguración_TbUsuario">
+    <End Role="TbUsuario" Type="Self.TbUsuario" Multiplicity="0..1" />
+    <End Role="TbConfiguración" Type="Self.TbConfiguración" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbUsuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="TbConfiguración">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbDevoluciònVenta_TbUsuario">
+    <End Role="TbUsuario" Type="Self.TbUsuario" Multiplicity="0..1" />
+    <End Role="TbDevoluciònVenta" Type="Self.TbDevoluciònVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbUsuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="TbDevoluciònVenta">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbDevoluciònVenta_TbVenta">
+    <End Role="TbVenta" Type="Self.TbVenta" Multiplicity="0..1" />
+    <End Role="TbDevoluciònVenta" Type="Self.TbDevoluciònVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbVenta">
+        <PropertyRef Name="IdVenta" />
+      </Principal>
+      <Dependent Role="TbDevoluciònVenta">
+        <PropertyRef Name="IdVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbMovimientoArticulo_TbTipoMovimiento">
+    <End Role="TbTipoMovimiento" Type="Self.TbTipoMovimiento" Multiplicity="0..1" />
+    <End Role="TbMovimientoArticulo" Type="Self.TbMovimientoArticulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbTipoMovimiento">
+        <PropertyRef Name="IdTipoMovimiento" />
+      </Principal>
+      <Dependent Role="TbMovimientoArticulo">
+        <PropertyRef Name="IdTipoMovimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbVenta_TbPromoción">
+    <End Role="TbPromoción" Type="Self.TbPromoción" Multiplicity="0..1" />
+    <End Role="TbVenta" Type="Self.TbVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbPromoción">
+        <PropertyRef Name="IdPromoción" />
+      </Principal>
+      <Dependent Role="TbVenta">
+        <PropertyRef Name="IdPromoción" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbRolUsuario_TbRol1">
+    <End Role="TbRol" Type="Self.TbRol" Multiplicity="0..1" />
+    <End Role="TbRolUsuario" Type="Self.TbRolUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbRol">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="TbRolUsuario">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbRolUsuario_TbUsuario">
+    <End Role="TbUsuario" Type="Self.TbUsuario" Multiplicity="1" />
+    <End Role="TbRolUsuario" Type="Self.TbRolUsuario" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TbUsuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="TbRolUsuario">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbVenta_TbUsuario">
+    <End Role="TbUsuario" Type="Self.TbUsuario" Multiplicity="0..1" />
+    <End Role="TbVenta" Type="Self.TbVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbUsuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="TbVenta">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TiendaLitosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TbArticulo" EntityType="Self.TbArticulo" />
+    <EntitySet Name="TbArticuloBaja" EntityType="Self.TbArticuloBaja" />
+    <EntitySet Name="TbArticuloBodega" EntityType="Self.TbArticuloBodega" />
+    <EntitySet Name="TbBodega" EntityType="Self.TbBodega" />
+    <EntitySet Name="TbCategoria" EntityType="Self.TbCategoria" />
+    <EntitySet Name="TbColor" EntityType="Self.TbColor" />
+    <EntitySet Name="TbCompra" EntityType="Self.TbCompra" />
+    <EntitySet Name="TbConfiguración" EntityType="Self.TbConfiguración" />
+    <EntitySet Name="TbDevoluciònVenta" EntityType="Self.TbDevoluciònVenta" />
+    <EntitySet Name="TbMarca" EntityType="Self.TbMarca" />
+    <EntitySet Name="TbMedida" EntityType="Self.TbMedida" />
+    <EntitySet Name="TbMovimientoArticulo" EntityType="Self.TbMovimientoArticulo" />
+    <EntitySet Name="TbPromoción" EntityType="Self.TbPromoción" />
+    <EntitySet Name="TbProveedor" EntityType="Self.TbProveedor" />
+    <EntitySet Name="TbRol" EntityType="Self.TbRol" />
+    <EntitySet Name="TbSubCategoria" EntityType="Self.TbSubCategoria" />
+    <EntitySet Name="TbTalla" EntityType="Self.TbTalla" />
+    <EntitySet Name="TbTipoMovimiento" EntityType="Self.TbTipoMovimiento" />
+    <EntitySet Name="TbUsuario" EntityType="Self.TbUsuario" />
+    <EntitySet Name="TbVenta" EntityType="Self.TbVenta" />
+    <EntitySet Name="TbRolUsuario" EntityType="Self.TbRolUsuario" />
+    <AssociationSet Name="FK_TbArticulo_TbSubCategoria" Association="Self.FK_TbArticulo_TbSubCategoria">
+      <End Role="TbSubCategoria" EntitySet="TbSubCategoria" />
+      <End Role="TbArticulo" EntitySet="TbArticulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbArticuloBodega_TbArticulo" Association="Self.FK_TbArticuloBodega_TbArticulo">
+      <End Role="TbArticulo" EntitySet="TbArticulo" />
+      <End Role="TbArticuloBodega" EntitySet="TbArticuloBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbDevoluciònVenta_TbArticulo" Association="Self.FK_TbDevoluciònVenta_TbArticulo">
+      <End Role="TbArticulo" EntitySet="TbArticulo" />
+      <End Role="TbDevoluciònVenta" EntitySet="TbDevoluciònVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbMovimientoArticulo_TbArticulo" Association="Self.FK_TbMovimientoArticulo_TbArticulo">
+      <End Role="TbArticulo" EntitySet="TbArticulo" />
+      <End Role="TbMovimientoArticulo" EntitySet="TbMovimientoArticulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbArticuloBaja_TbArticuloBodega" Association="Self.FK_TbArticuloBaja_TbArticuloBodega">
+      <End Role="TbArticuloBodega" EntitySet="TbArticuloBodega" />
+      <End Role="TbArticuloBaja" EntitySet="TbArticuloBaja" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbArticuloBaja_TbTipoMovimiento" Association="Self.FK_TbArticuloBaja_TbTipoMovimiento">
+      <End Role="TbTipoMovimiento" EntitySet="TbTipoMovimiento" />
+      <End Role="TbArticuloBaja" EntitySet="TbArticuloBaja" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbArticuloBodega_TbBodega" Association="Self.FK_TbArticuloBodega_TbBodega">
+      <End Role="TbBodega" EntitySet="TbBodega" />
+      <End Role="TbArticuloBodega" EntitySet="TbArticuloBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbArticuloBodega_TbColor" Association="Self.FK_TbArticuloBodega_TbColor">
+      <End Role="TbColor" EntitySet="TbColor" />
+      <End Role="TbArticuloBodega" EntitySet="TbArticuloBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbArticuloBodega_TbMarca" Association="Self.FK_TbArticuloBodega_TbMarca">
+      <End Role="TbMarca" EntitySet="TbMarca" />
+      <End Role="TbArticuloBodega" EntitySet="TbArticuloBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbArticuloBodega_TbMedida" Association="Self.FK_TbArticuloBodega_TbMedida">
+      <End Role="TbMedida" EntitySet="TbMedida" />
+      <End Role="TbArticuloBodega" EntitySet="TbArticuloBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbArticuloBodega_TbTalla" Association="Self.FK_TbArticuloBodega_TbTalla">
+      <End Role="TbTalla" EntitySet="TbTalla" />
+      <End Role="TbArticuloBodega" EntitySet="TbArticuloBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbMovimientoArticulo_TbArticuloBodega" Association="Self.FK_TbMovimientoArticulo_TbArticuloBodega">
+      <End Role="TbArticuloBodega" EntitySet="TbArticuloBodega" />
+      <End Role="TbMovimientoArticulo" EntitySet="TbMovimientoArticulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbSubCategoria_TbCategoria" Association="Self.FK_TbSubCategoria_TbCategoria">
+      <End Role="TbCategoria" EntitySet="TbCategoria" />
+      <End Role="TbSubCategoria" EntitySet="TbSubCategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbCompra_TbProveedor" Association="Self.FK_TbCompra_TbProveedor">
+      <End Role="TbProveedor" EntitySet="TbProveedor" />
+      <End Role="TbCompra" EntitySet="TbCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbCompra_TbUsuario" Association="Self.FK_TbCompra_TbUsuario">
+      <End Role="TbUsuario" EntitySet="TbUsuario" />
+      <End Role="TbCompra" EntitySet="TbCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbConfiguración_TbUsuario" Association="Self.FK_TbConfiguración_TbUsuario">
+      <End Role="TbUsuario" EntitySet="TbUsuario" />
+      <End Role="TbConfiguración" EntitySet="TbConfiguración" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbDevoluciònVenta_TbUsuario" Association="Self.FK_TbDevoluciònVenta_TbUsuario">
+      <End Role="TbUsuario" EntitySet="TbUsuario" />
+      <End Role="TbDevoluciònVenta" EntitySet="TbDevoluciònVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbDevoluciònVenta_TbVenta" Association="Self.FK_TbDevoluciònVenta_TbVenta">
+      <End Role="TbVenta" EntitySet="TbVenta" />
+      <End Role="TbDevoluciònVenta" EntitySet="TbDevoluciònVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbMovimientoArticulo_TbTipoMovimiento" Association="Self.FK_TbMovimientoArticulo_TbTipoMovimiento">
+      <End Role="TbTipoMovimiento" EntitySet="TbTipoMovimiento" />
+      <End Role="TbMovimientoArticulo" EntitySet="TbMovimientoArticulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbVenta_TbPromoción" Association="Self.FK_TbVenta_TbPromoción">
+      <End Role="TbPromoción" EntitySet="TbPromoción" />
+      <End Role="TbVenta" EntitySet="TbVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbRolUsuario_TbRol1" Association="Self.FK_TbRolUsuario_TbRol1">
+      <End Role="TbRol" EntitySet="TbRol" />
+      <End Role="TbRolUsuario" EntitySet="TbRolUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbRolUsuario_TbUsuario" Association="Self.FK_TbRolUsuario_TbUsuario">
+      <End Role="TbUsuario" EntitySet="TbUsuario" />
+      <End Role="TbRolUsuario" EntitySet="TbRolUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbVenta_TbUsuario" Association="Self.FK_TbVenta_TbUsuario">
+      <End Role="TbUsuario" EntitySet="TbUsuario" />
+      <End Role="TbVenta" EntitySet="TbVenta" />
+    </AssociationSet>
+    <EntitySet Name="TbDetalleCompra" EntityType="TiendaLitosModel.TbDetalleCompra" />
+    <AssociationSet Name="FK_TbDetalleCompra_TbCompra1" Association="TiendaLitosModel.FK_TbDetalleCompra_TbCompra1">
+      <End Role="TbCompra" EntitySet="TbCompra" />
+      <End Role="TbDetalleCompra" EntitySet="TbDetalleCompra" />
+    </AssociationSet>
+    <EntitySet Name="TbDetalleVenta" EntityType="TiendaLitosModel.TbDetalleVenta" />
+    <AssociationSet Name="FK_TbDetalleVenta_TbArticuloBodega" Association="TiendaLitosModel.FK_TbDetalleVenta_TbArticuloBodega">
+      <End Role="TbArticuloBodega" EntitySet="TbArticuloBodega" />
+      <End Role="TbDetalleVenta" EntitySet="TbDetalleVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TbDetalleVenta_TbVenta1" Association="TiendaLitosModel.FK_TbDetalleVenta_TbVenta1">
+      <End Role="TbVenta" EntitySet="TbVenta" />
+      <End Role="TbDetalleVenta" EntitySet="TbDetalleVenta" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TbDetalleCompra">
+    <Key>
+      <PropertyRef Name="IdDetalleCompra" />
+    </Key>
+    <Property Name="IdCompra" Type="Int32" />
+    <Property Name="IdArticulo" Type="Int32" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="Precio" Type="Double" />
+    <Property Name="Descuento" Type="Double" />
+    <Property Name="SubTotal" Type="Double" />
+    <Property Name="IdDetalleCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="TbCompra" Relationship="TiendaLitosModel.FK_TbDetalleCompra_TbCompra1" FromRole="TbDetalleCompra" ToRole="TbCompra" />
+  </EntityType>
+  <Association Name="FK_TbDetalleCompra_TbCompra1">
+    <End Type="TiendaLitosModel.TbCompra" Role="TbCompra" Multiplicity="0..1" />
+    <End Type="TiendaLitosModel.TbDetalleCompra" Role="TbDetalleCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbCompra">
+        <PropertyRef Name="IdCompra" />
+      </Principal>
+      <Dependent Role="TbDetalleCompra">
+        <PropertyRef Name="IdCompra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TbDetalleVenta">
+    <Key>
+      <PropertyRef Name="IdDetalleVenta" />
+    </Key>
+    <Property Name="IdVenta" Type="Int32" />
+    <Property Name="IdArticuloBodega" Type="Int32" />
+    <Property Name="DescripciónArticulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UdMedidaVenta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrecioPorUnidad" Type="Double" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="PrecioVenta" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Descuento" Type="Double" />
+    <Property Name="Pago" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Cambio" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IdDetalleVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="TbArticuloBodega" Relationship="TiendaLitosModel.FK_TbDetalleVenta_TbArticuloBodega" FromRole="TbDetalleVenta" ToRole="TbArticuloBodega" />
+    <NavigationProperty Name="TbVenta" Relationship="TiendaLitosModel.FK_TbDetalleVenta_TbVenta1" FromRole="TbDetalleVenta" ToRole="TbVenta" />
+  </EntityType>
+  <Association Name="FK_TbDetalleVenta_TbArticuloBodega">
+    <End Type="TiendaLitosModel.TbArticuloBodega" Role="TbArticuloBodega" Multiplicity="0..1" />
+    <End Type="TiendaLitosModel.TbDetalleVenta" Role="TbDetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbArticuloBodega">
+        <PropertyRef Name="IdArticuloBodega" />
+      </Principal>
+      <Dependent Role="TbDetalleVenta">
+        <PropertyRef Name="IdArticuloBodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TbDetalleVenta_TbVenta1">
+    <End Type="TiendaLitosModel.TbVenta" Role="TbVenta" Multiplicity="0..1" />
+    <End Type="TiendaLitosModel.TbDetalleVenta" Role="TbDetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbVenta">
+        <PropertyRef Name="IdVenta" />
+      </Principal>
+      <Dependent Role="TbDetalleVenta">
+        <PropertyRef Name="IdVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
