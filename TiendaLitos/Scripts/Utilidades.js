@@ -46,3 +46,7 @@ $(document).on("click", "a[data-href]", function () {
 
     window.location.href = "/Pages/"+$(this).data("href");
 });
+
+$(function () {
+    $("select").attr("data-live-search", true);
+});

@@ -27,6 +27,8 @@
                     $(cmbArticulo).append("<option value=" + item.IdArticulo + ">" + item.NombreArticulo + "</option>");
                 }
             });
+            
+            $(cmbArticulo).selectpicker();
         });
     }
 
@@ -38,6 +40,7 @@
             $.each(response.d, function (i, item) {
                     $(cmbProveedor).append("<option value=" + item.IdProveedor + ">" + item.Nombre + "</option>");
             });
+            $(cmbProveedor).selectpicker();
         });
     }
     function GetAllBodega() {
@@ -50,6 +53,7 @@
                 $(cmb).append("<option value=" + item.IdBodega + ">" + item.Nombre + "</option>");
                 
             });
+            $(cmb).selectpicker();
         });
     }
     function GetAllMedida() {
@@ -61,6 +65,7 @@
                     $(cmb).append("<option value=" + item.IdMedida + ">" + item.NombreMedida + "</option>");
                 
             });
+            $(cmb).selectpicker();
         });
     }
     function GetAllMarca() {
@@ -73,6 +78,7 @@
                     $(cmb).append("<option value=" + item.IdMarca + ">" + item.NombreMarca + "</option>");
                 }
             });
+            $(cmb).selectpicker();
         });
     }
     function GetAllColor() {
@@ -85,6 +91,7 @@
                     $(cmb).append("<option value=" + item.IdColor + ">" + item.NombreColor + "</option>");
                 }
             });
+            $(cmb).selectpicker();
         });
     }
     function GetAllTalla() {
@@ -97,6 +104,7 @@
                     $(cmb).append("<option value=" + item.IdTalla + ">" + item.NombreTalla + "</option>");
                 }
             });
+            $(cmb).selectpicker();
         });
     }
 
