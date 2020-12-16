@@ -56,7 +56,7 @@ namespace TiendaLitos.Service
                         NoFactura = $"{fechaActual.Year}{fechaActual.Month}{fechaActual.Day}{nCompras}"
                     };
                     _Context.TbCompra.Add(compra);
-
+                    _Context.SaveChanges();
                     foreach (var detalle in compraRequest.DetalleCompra)
                     {
 
@@ -79,6 +79,7 @@ namespace TiendaLitos.Service
                         }
                         _Context.TbArticuloBodega.Add(new TbArticuloBodega
                         {
+                            IdCompra = compra.IdCompra,
                             Descuento = detalle.Descuento,
                             DescuentoMaximo = detalle.Descuento,
                             IdArticulo = detalle.IdArticulo,
@@ -111,17 +112,26 @@ namespace TiendaLitos.Service
             var compras = (from c in _Context.TbCompra
                            join pro in _Context.TbProveedor on c.IdProveedor equals pro.IdProveedor
                            let detalle = (from de in _Context.TbDetalleCompra
+                                          join ad in _Context.TbArticuloBodega on de.IdCompra equals ad.IdCompra
                                           join a in _Context.TbArticulo on de.IdArticulo equals a.IdArticulo
-                                          
-                                         
+                                          join co in _Context.TbColor on ad.IdColor equals co.IdColor
+                                          join m in _Context.TbMedida on ad.IdMedida equals m.IdMedida
+                                          join ma in _Context.TbMarca on ad.IdMarca equals ma.IdMarca
+                                          join t in _Context.TbTalla on ad.IdTalla equals t.IdTalla
                                           where de.IdCompra == c.IdCompra
+                                          group new {de, ad, a, co, m, ma, t} by a.NombreArticulo
+                                          into grupo
                                           select new DetCompra
                                           {
-                                              Articulo = a.NombreArticulo,
-                                              Cantidad = de.Cantidad,
-                                              Descuento = de.Descuento,
-                                              Precio = de.Precio,
-                                              SubTotalArticulo = de.SubTotal
+                                              Articulo = grupo.Key,
+                                              Cantidad = grupo.FirstOrDefault().de.Cantidad,
+                                              Descuento = grupo.FirstOrDefault().de.Descuento,
+                                              Precio = grupo.FirstOrDefault().de.Precio,
+                                              SubTotalArticulo = grupo.FirstOrDefault().de.SubTotal,
+                                              Color = grupo.FirstOrDefault().co.NombreColor,
+                                              Marca = grupo.FirstOrDefault().ma.NombreMarca,
+                                              Talla = grupo.FirstOrDefault().t.NombreTalla,
+                                              Medida = grupo.FirstOrDefault().m.NombreMedida
                                           })
                            select new Compra
                            {

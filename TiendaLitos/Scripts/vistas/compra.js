@@ -162,12 +162,14 @@
         if (esEdicion) {
             if (articulo.length && articulo.length > 1) {
                 toastr.error('El árticulo ya ha sido agregado al detalle.');
+                RefreshControl();
                 return;
             }
         }
         else {
             if (articulo.length) {
                 toastr.error('El árticulo ya ha sido agregado al detalle.');
+                RefreshControl();
                 return;
             }
         }
@@ -185,8 +187,17 @@
         LlenarDetalleCompra();
         CalculateTotalCompra();
         esEdicion = false;
+        RefreshControl();
     });
 
+    function RefreshControl() {
+        $("#IdArticulo").selectpicker("refresh");
+        $("#IdBodega").selectpicker("refresh");
+        $("#IdMedida").selectpicker("refresh");
+        $("#IdMarca").selectpicker("refresh");
+        $("#IdColor").selectpicker("refresh");
+        $("#IdTalla").selectpicker("refresh");
+    }
     $(document).on("click", "button[data-save-comprar]", function () {
 
         var controlCompra = $("input[data-compra], select[data-compra]");
@@ -225,7 +236,7 @@
 
         CompraArticulos.Compra = compra;
         CompraArticulos.DetalleCompra = detalleCompra;
-
+        $("#IdProveedor").selectpicker("refresh");
         HttpClient.Post("Compras.aspx/Comprar", JSON.stringify({ compraRequest : CompraArticulos})).then((response) => {
 
             toastr.success('Compra realizada exitosamente.');
@@ -246,7 +257,7 @@
         $.each(controles, function (i, item) {
             $(item).val(detalle[$(item).attr("Id")]);
         });
-
+        RefreshControl();
     });
     $(document).on("click", "button[data-accion-eliminar]", function () {
         var IdDetalle = +$(this).data("accionEliminar");

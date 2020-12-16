@@ -146,13 +146,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Context\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Context\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Pages\ListadoVentas.aspx" />
     <Content Include="Scripts\dist\css\bootstrap-select.css.map" />
     <Content Include="Scripts\dist\js\bootstrap-select.js.map" />
@@ -197,6 +190,13 @@
     <Content Include="Scripts\dist\js\i18n\defaults-vi_VN.js.map" />
     <Content Include="Scripts\dist\js\i18n\defaults-zh_CN.js.map" />
     <Content Include="Scripts\dist\js\i18n\defaults-zh_TW.js.map" />
+    <EntityDeploy Include="Context\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Context\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Pages\Articulo.aspx" />
     <Content Include="Pages\ArticuloBodega.aspx" />
@@ -302,6 +302,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\lisatoventas.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\Utilidades.js" />
@@ -310,6 +311,7 @@
     <Content Include="Scripts\vistas\listadocompras.js" />
     <Content Include="Scripts\vistas\sub-categoria.js" />
     <Content Include="Scripts\vistas\categoria.js" />
+    <Content Include="Scripts\vistas\ventas.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
@@ -551,6 +553,7 @@
     <Compile Include="Service\ServiceMedida.cs" />
     <Compile Include="Service\ServiceSubCategoria.cs" />
     <Compile Include="Service\ServiceTalla.cs" />
+    <Compile Include="Service\ServiceVenta.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -26,6 +26,12 @@ namespace TiendaLitos.Pages
         }
 
         [WebMethod]
+        public static List<CapaEntidades.ArticuloBodegaResult> GetAllArticulosBodega()
+        {
+            return ServiceArtBodega.GetAllArticulosBodega();
+        }
+
+        [WebMethod]
         public static List<ArtBodega> GetArticulosBodega()
         {
             return ServiceArtBodega.GetArticulosBodega();

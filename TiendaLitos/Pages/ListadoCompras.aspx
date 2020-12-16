@@ -41,7 +41,7 @@
     </div>
 
     <div class="modal fade" id="detalleCompra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="tituloDetallCompra"></h5>
@@ -54,6 +54,10 @@
                         <thead>
                             <tr>
                                 <th>Articulo </th>
+                                <th>Color </th>
+                                <th>Marca </th>
+                                <th>Medida </th>
+                                <th>Talla </th>
                                 <th>Cantidad </th>
                                 <th>Precio </th>
                                 <th>Descuento </th>

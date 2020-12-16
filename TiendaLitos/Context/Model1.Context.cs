@@ -33,6 +33,8 @@ namespace TiendaLitos.Context
         public virtual DbSet<TbColor> TbColor { get; set; }
         public virtual DbSet<TbCompra> TbCompra { get; set; }
         public virtual DbSet<TbConfiguración> TbConfiguración { get; set; }
+        public virtual DbSet<TbDetalleCompra> TbDetalleCompra { get; set; }
+        public virtual DbSet<TbDetalleVenta> TbDetalleVenta { get; set; }
         public virtual DbSet<TbDevoluciònVenta> TbDevoluciònVenta { get; set; }
         public virtual DbSet<TbMarca> TbMarca { get; set; }
         public virtual DbSet<TbMedida> TbMedida { get; set; }
@@ -46,7 +48,5 @@ namespace TiendaLitos.Context
         public virtual DbSet<TbUsuario> TbUsuario { get; set; }
         public virtual DbSet<TbVenta> TbVenta { get; set; }
         public virtual DbSet<TbRolUsuario> TbRolUsuario { get; set; }
-        public virtual DbSet<TbDetalleCompra> TbDetalleCompra { get; set; }
-        public virtual DbSet<TbDetalleVenta> TbDetalleVenta { get; set; }
     }
 }

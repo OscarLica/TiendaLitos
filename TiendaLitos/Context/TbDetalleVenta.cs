@@ -15,7 +15,7 @@ namespace TiendaLitos.Context
     public partial class TbDetalleVenta
     {
         public Nullable<int> IdVenta { get; set; }
-        public Nullable<int> IdArticuloBodega { get; set; }
+        public Nullable<int> IdArticulo { get; set; }
         public string DescripciónArticulo { get; set; }
         public string UdMedidaVenta { get; set; }
         public Nullable<double> PrecioPorUnidad { get; set; }
@@ -27,7 +27,6 @@ namespace TiendaLitos.Context
         public Nullable<decimal> Cambio { get; set; }
         public int IdDetalleVenta { get; set; }
     
-        public virtual TbArticuloBodega TbArticuloBodega { get; set; }
         public virtual TbVenta TbVenta { get; set; }
     }
 }

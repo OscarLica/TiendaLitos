@@ -17,8 +17,8 @@ namespace TiendaLitos.Context
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TbVenta()
         {
-            this.TbDevoluciònVenta = new HashSet<TbDevoluciònVenta>();
             this.TbDetalleVenta = new HashSet<TbDetalleVenta>();
+            this.TbDevoluciònVenta = new HashSet<TbDevoluciònVenta>();
         }
     
         public int IdVenta { get; set; }
@@ -32,10 +32,10 @@ namespace TiendaLitos.Context
         public string NombreCliente { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TbDetalleVenta> TbDetalleVenta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TbDevoluciònVenta> TbDevoluciònVenta { get; set; }
         public virtual TbPromoción TbPromoción { get; set; }
         public virtual TbUsuario TbUsuario { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TbDetalleVenta> TbDetalleVenta { get; set; }
     }
 }

@@ -41,6 +41,7 @@
           <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
           <ScalarProperty Name="Descuento" ColumnName="Descuento" />
           <ScalarProperty Name="DescuentoMaximo" ColumnName="DescuentoMaximo" />
+          <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -96,6 +97,37 @@
           <ScalarProperty Name="ConfTelefono" ColumnName="ConfTelefono" />
           <ScalarProperty Name="ConfDireccion" ColumnName="ConfDireccion" />
           <ScalarProperty Name="ConfEncabezadoFactura" ColumnName="ConfEncabezadoFactura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbDetalleCompra">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbDetalleCompra">
+        <MappingFragment StoreEntitySet="TbDetalleCompra">
+          <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+          <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="IdDetalleCompra" ColumnName="IdDetalleCompra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbDetalleVenta">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TbDetalleVenta">
+        <MappingFragment StoreEntitySet="TbDetalleVenta">
+          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+          <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+          <ScalarProperty Name="DescripciónArticulo" ColumnName="DescripciónArticulo" />
+          <ScalarProperty Name="UdMedidaVenta" ColumnName="UdMedidaVenta" />
+          <ScalarProperty Name="PrecioPorUnidad" ColumnName="PrecioPorUnidad" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="Pago" ColumnName="Pago" />
+          <ScalarProperty Name="Cambio" ColumnName="Cambio" />
+          <ScalarProperty Name="IdDetalleVenta" ColumnName="IdDetalleVenta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -241,37 +273,6 @@
         <MappingFragment StoreEntitySet="TbRolUsuario">
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
           <ScalarProperty Name="IdRol" ColumnName="IdRol" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TbDetalleCompra">
-      <EntityTypeMapping TypeName="TiendaLitosModel.TbDetalleCompra">
-        <MappingFragment StoreEntitySet="TbDetalleCompra">
-          <ScalarProperty Name="IdDetalleCompra" ColumnName="IdDetalleCompra" />
-          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-          <ScalarProperty Name="Precio" ColumnName="Precio" />
-          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-          <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
-          <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TbDetalleVenta">
-      <EntityTypeMapping TypeName="TiendaLitosModel.TbDetalleVenta">
-        <MappingFragment StoreEntitySet="TbDetalleVenta">
-          <ScalarProperty Name="IdDetalleVenta" ColumnName="IdDetalleVenta" />
-          <ScalarProperty Name="Cambio" ColumnName="Cambio" />
-          <ScalarProperty Name="Pago" ColumnName="Pago" />
-          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-          <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
-          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-          <ScalarProperty Name="PrecioPorUnidad" ColumnName="PrecioPorUnidad" />
-          <ScalarProperty Name="UdMedidaVenta" ColumnName="UdMedidaVenta" />
-          <ScalarProperty Name="DescripciónArticulo" ColumnName="DescripciónArticulo" />
-          <ScalarProperty Name="IdArticuloBodega" ColumnName="IdArticuloBodega" />
-          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

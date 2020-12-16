@@ -19,7 +19,6 @@ namespace TiendaLitos.Context
         {
             this.TbArticuloBaja = new HashSet<TbArticuloBaja>();
             this.TbMovimientoArticulo = new HashSet<TbMovimientoArticulo>();
-            this.TbDetalleVenta = new HashSet<TbDetalleVenta>();
         }
     
         public int IdArticuloBodega { get; set; }
@@ -34,6 +33,7 @@ namespace TiendaLitos.Context
         public Nullable<double> PrecioVenta { get; set; }
         public Nullable<double> Descuento { get; set; }
         public Nullable<double> DescuentoMaximo { get; set; }
+        public Nullable<int> IdCompra { get; set; }
     
         public virtual TbArticulo TbArticulo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -45,7 +45,5 @@ namespace TiendaLitos.Context
         public virtual TbTalla TbTalla { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TbMovimientoArticulo> TbMovimientoArticulo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TbDetalleVenta> TbDetalleVenta { get; set; }
     }
 }

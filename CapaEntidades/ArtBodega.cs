@@ -13,6 +13,7 @@ namespace CapaEntidades
         public double TotalPVenta { get; set; }
         public double TotalDescuento { get; set; }
         public double TotalDescuentoMaximo { get; set; }
+        public int TotalCantidad { get; set; }
 
         public List<ArticuloBodega> ArticuloBodega { get; set; }
     }
@@ -24,5 +25,6 @@ namespace CapaEntidades
         public double PVenta { get; set; }
         public double Descuento { get; set; }
         public double DescuentoMaximo { get; set; }
+        public string Cantidad { get; set; }
     }
 }

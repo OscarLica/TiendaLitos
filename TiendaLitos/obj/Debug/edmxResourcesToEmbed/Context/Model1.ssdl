@@ -39,6 +39,7 @@
     <Property Name="PrecioVenta" Type="float" />
     <Property Name="Descuento" Type="float" />
     <Property Name="DescuentoMaximo" Type="float" />
+    <Property Name="IdCompra" Type="int" />
   </EntityType>
   <EntityType Name="TbBodega">
     <Key>
@@ -107,7 +108,7 @@
       <PropertyRef Name="IdDetalleVenta" />
     </Key>
     <Property Name="IdVenta" Type="int" />
-    <Property Name="IdArticuloBodega" Type="int" />
+    <Property Name="IdArticulo" Type="int" />
     <Property Name="DescripciónArticulo" Type="nvarchar" MaxLength="50" />
     <Property Name="UdMedidaVenta" Type="nvarchar" MaxLength="50" />
     <Property Name="PrecioPorUnidad" Type="float" />
@@ -409,18 +410,6 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TbDetalleVenta_TbArticuloBodega">
-    <End Role="TbArticuloBodega" Type="Self.TbArticuloBodega" Multiplicity="0..1" />
-    <End Role="TbDetalleVenta" Type="Self.TbDetalleVenta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TbArticuloBodega">
-        <PropertyRef Name="IdArticuloBodega" />
-      </Principal>
-      <Dependent Role="TbDetalleVenta">
-        <PropertyRef Name="IdArticuloBodega" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_TbDetalleVenta_TbVenta1">
     <End Role="TbVenta" Type="Self.TbVenta" Multiplicity="0..1" />
     <End Role="TbDetalleVenta" Type="Self.TbDetalleVenta" Multiplicity="*" />
@@ -645,10 +634,6 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
     <AssociationSet Name="FK_TbDetalleCompra_TbCompra1" Association="Self.FK_TbDetalleCompra_TbCompra1">
       <End Role="TbCompra" EntitySet="TbCompra" />
       <End Role="TbDetalleCompra" EntitySet="TbDetalleCompra" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TbDetalleVenta_TbArticuloBodega" Association="Self.FK_TbDetalleVenta_TbArticuloBodega">
-      <End Role="TbArticuloBodega" EntitySet="TbArticuloBodega" />
-      <End Role="TbDetalleVenta" EntitySet="TbDetalleVenta" />
     </AssociationSet>
     <AssociationSet Name="FK_TbDetalleVenta_TbVenta1" Association="Self.FK_TbDetalleVenta_TbVenta1">
       <End Role="TbVenta" EntitySet="TbVenta" />

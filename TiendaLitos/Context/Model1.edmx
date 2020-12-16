@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TiendaLitosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TiendaLitosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TbArticulo">
           <Key>
             <PropertyRef Name="IdArticulo" />
@@ -44,6 +44,7 @@
           <Property Name="PrecioVenta" Type="float" />
           <Property Name="Descuento" Type="float" />
           <Property Name="DescuentoMaximo" Type="float" />
+          <Property Name="IdCompra" Type="int" />
         </EntityType>
         <EntityType Name="TbBodega">
           <Key>
@@ -112,7 +113,7 @@
             <PropertyRef Name="IdDetalleVenta" />
           </Key>
           <Property Name="IdVenta" Type="int" />
-          <Property Name="IdArticuloBodega" Type="int" />
+          <Property Name="IdArticulo" Type="int" />
           <Property Name="DescripciónArticulo" Type="nvarchar" MaxLength="50" />
           <Property Name="UdMedidaVenta" Type="nvarchar" MaxLength="50" />
           <Property Name="PrecioPorUnidad" Type="float" />
@@ -414,18 +415,6 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TbDetalleVenta_TbArticuloBodega">
-          <End Role="TbArticuloBodega" Type="Self.TbArticuloBodega" Multiplicity="0..1" />
-          <End Role="TbDetalleVenta" Type="Self.TbDetalleVenta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TbArticuloBodega">
-              <PropertyRef Name="IdArticuloBodega" />
-            </Principal>
-            <Dependent Role="TbDetalleVenta">
-              <PropertyRef Name="IdArticuloBodega" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TbDetalleVenta_TbVenta1">
           <End Role="TbVenta" Type="Self.TbVenta" Multiplicity="0..1" />
           <End Role="TbDetalleVenta" Type="Self.TbDetalleVenta" Multiplicity="*" />
@@ -651,10 +640,6 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
             <End Role="TbCompra" EntitySet="TbCompra" />
             <End Role="TbDetalleCompra" EntitySet="TbDetalleCompra" />
           </AssociationSet>
-          <AssociationSet Name="FK_TbDetalleVenta_TbArticuloBodega" Association="Self.FK_TbDetalleVenta_TbArticuloBodega">
-            <End Role="TbArticuloBodega" EntitySet="TbArticuloBodega" />
-            <End Role="TbDetalleVenta" EntitySet="TbDetalleVenta" />
-          </AssociationSet>
           <AssociationSet Name="FK_TbDetalleVenta_TbVenta1" Association="Self.FK_TbDetalleVenta_TbVenta1">
             <End Role="TbVenta" EntitySet="TbVenta" />
             <End Role="TbDetalleVenta" EntitySet="TbDetalleVenta" />
@@ -704,7 +689,8 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
             <End Role="TbVenta" EntitySet="TbVenta" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TiendaLitosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -753,6 +739,7 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
           <Property Name="PrecioVenta" Type="Double" />
           <Property Name="Descuento" Type="Double" />
           <Property Name="DescuentoMaximo" Type="Double" />
+          <Property Name="IdCompra" Type="Int32" />
           <NavigationProperty Name="TbArticulo" Relationship="Self.FK_TbArticuloBodega_TbArticulo" FromRole="TbArticuloBodega" ToRole="TbArticulo" />
           <NavigationProperty Name="TbArticuloBaja" Relationship="Self.FK_TbArticuloBaja_TbArticuloBodega" FromRole="TbArticuloBodega" ToRole="TbArticuloBaja" />
           <NavigationProperty Name="TbBodega" Relationship="Self.FK_TbArticuloBodega_TbBodega" FromRole="TbArticuloBodega" ToRole="TbBodega" />
@@ -761,7 +748,6 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
           <NavigationProperty Name="TbMedida" Relationship="Self.FK_TbArticuloBodega_TbMedida" FromRole="TbArticuloBodega" ToRole="TbMedida" />
           <NavigationProperty Name="TbTalla" Relationship="Self.FK_TbArticuloBodega_TbTalla" FromRole="TbArticuloBodega" ToRole="TbTalla" />
           <NavigationProperty Name="TbMovimientoArticulo" Relationship="Self.FK_TbMovimientoArticulo_TbArticuloBodega" FromRole="TbArticuloBodega" ToRole="TbMovimientoArticulo" />
-          <NavigationProperty Name="TbDetalleVenta" Relationship="TiendaLitosModel.FK_TbDetalleVenta_TbArticuloBodega" FromRole="TbArticuloBodega" ToRole="TbDetalleVenta" />
         </EntityType>
         <EntityType Name="TbBodega">
           <Key>
@@ -805,7 +791,7 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
           <Property Name="IdUsuario" Type="Int32" />
           <NavigationProperty Name="TbProveedor" Relationship="Self.FK_TbCompra_TbProveedor" FromRole="TbCompra" ToRole="TbProveedor" />
           <NavigationProperty Name="TbUsuario" Relationship="Self.FK_TbCompra_TbUsuario" FromRole="TbCompra" ToRole="TbUsuario" />
-          <NavigationProperty Name="TbDetalleCompra" Relationship="TiendaLitosModel.FK_TbDetalleCompra_TbCompra1" FromRole="TbCompra" ToRole="TbDetalleCompra" />
+          <NavigationProperty Name="TbDetalleCompra" Relationship="Self.FK_TbDetalleCompra_TbCompra1" FromRole="TbCompra" ToRole="TbDetalleCompra" />
         </EntityType>
         <EntityType Name="TbConfiguración">
           <Key>
@@ -819,6 +805,37 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
           <Property Name="ConfDireccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ConfEncabezadoFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TbUsuario" Relationship="Self.FK_TbConfiguración_TbUsuario" FromRole="TbConfiguración" ToRole="TbUsuario" />
+        </EntityType>
+        <EntityType Name="TbDetalleCompra">
+          <Key>
+            <PropertyRef Name="IdDetalleCompra" />
+          </Key>
+          <Property Name="IdCompra" Type="Int32" />
+          <Property Name="IdArticulo" Type="Int32" />
+          <Property Name="Cantidad" Type="Double" />
+          <Property Name="Precio" Type="Double" />
+          <Property Name="Descuento" Type="Double" />
+          <Property Name="SubTotal" Type="Double" />
+          <Property Name="IdDetalleCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="TbCompra" Relationship="Self.FK_TbDetalleCompra_TbCompra1" FromRole="TbDetalleCompra" ToRole="TbCompra" />
+        </EntityType>
+        <EntityType Name="TbDetalleVenta">
+          <Key>
+            <PropertyRef Name="IdDetalleVenta" />
+          </Key>
+          <Property Name="IdVenta" Type="Int32" />
+          <Property Name="IdArticulo" Type="Int32" />
+          <Property Name="DescripciónArticulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UdMedidaVenta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrecioPorUnidad" Type="Double" />
+          <Property Name="Cantidad" Type="Double" />
+          <Property Name="PrecioVenta" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Descuento" Type="Double" />
+          <Property Name="Pago" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Cambio" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdDetalleVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="TbVenta" Relationship="Self.FK_TbDetalleVenta_TbVenta1" FromRole="TbDetalleVenta" ToRole="TbVenta" />
         </EntityType>
         <EntityType Name="TbDevoluciònVenta">
           <Key>
@@ -965,10 +982,10 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
           <Property Name="Anular" Type="Boolean" />
           <Property Name="SubTotal" Type="Double" />
           <Property Name="NombreCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TbDetalleVenta" Relationship="Self.FK_TbDetalleVenta_TbVenta1" FromRole="TbVenta" ToRole="TbDetalleVenta" />
           <NavigationProperty Name="TbDevoluciònVenta" Relationship="Self.FK_TbDevoluciònVenta_TbVenta" FromRole="TbVenta" ToRole="TbDevoluciònVenta" />
           <NavigationProperty Name="TbPromoción" Relationship="Self.FK_TbVenta_TbPromoción" FromRole="TbVenta" ToRole="TbPromoción" />
           <NavigationProperty Name="TbUsuario" Relationship="Self.FK_TbVenta_TbUsuario" FromRole="TbVenta" ToRole="TbUsuario" />
-          <NavigationProperty Name="TbDetalleVenta" Relationship="TiendaLitosModel.FK_TbDetalleVenta_TbVenta1" FromRole="TbVenta" ToRole="TbDetalleVenta" />
         </EntityType>
         <EntityType Name="TbRolUsuario">
           <Key>
@@ -1159,6 +1176,18 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TbDetalleCompra_TbCompra1">
+          <End Role="TbCompra" Type="Self.TbCompra" Multiplicity="0..1" />
+          <End Role="TbDetalleCompra" Type="Self.TbDetalleCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TbCompra">
+              <PropertyRef Name="IdCompra" />
+            </Principal>
+            <Dependent Role="TbDetalleCompra">
+              <PropertyRef Name="IdCompra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TbConfiguración_TbUsuario">
           <End Role="TbUsuario" Type="Self.TbUsuario" Multiplicity="0..1" />
           <End Role="TbConfiguración" Type="Self.TbConfiguración" Multiplicity="*" />
@@ -1168,6 +1197,18 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
             </Principal>
             <Dependent Role="TbConfiguración">
               <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TbDetalleVenta_TbVenta1">
+          <End Role="TbVenta" Type="Self.TbVenta" Multiplicity="0..1" />
+          <End Role="TbDetalleVenta" Type="Self.TbDetalleVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TbVenta">
+              <PropertyRef Name="IdVenta" />
+            </Principal>
+            <Dependent Role="TbDetalleVenta">
+              <PropertyRef Name="IdVenta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1264,6 +1305,8 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
           <EntitySet Name="TbColor" EntityType="Self.TbColor" />
           <EntitySet Name="TbCompra" EntityType="Self.TbCompra" />
           <EntitySet Name="TbConfiguración" EntityType="Self.TbConfiguración" />
+          <EntitySet Name="TbDetalleCompra" EntityType="Self.TbDetalleCompra" />
+          <EntitySet Name="TbDetalleVenta" EntityType="Self.TbDetalleVenta" />
           <EntitySet Name="TbDevoluciònVenta" EntityType="Self.TbDevoluciònVenta" />
           <EntitySet Name="TbMarca" EntityType="Self.TbMarca" />
           <EntitySet Name="TbMedida" EntityType="Self.TbMedida" />
@@ -1337,9 +1380,17 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
             <End Role="TbUsuario" EntitySet="TbUsuario" />
             <End Role="TbCompra" EntitySet="TbCompra" />
           </AssociationSet>
+          <AssociationSet Name="FK_TbDetalleCompra_TbCompra1" Association="Self.FK_TbDetalleCompra_TbCompra1">
+            <End Role="TbCompra" EntitySet="TbCompra" />
+            <End Role="TbDetalleCompra" EntitySet="TbDetalleCompra" />
+          </AssociationSet>
           <AssociationSet Name="FK_TbConfiguración_TbUsuario" Association="Self.FK_TbConfiguración_TbUsuario">
             <End Role="TbUsuario" EntitySet="TbUsuario" />
             <End Role="TbConfiguración" EntitySet="TbConfiguración" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TbDetalleVenta_TbVenta1" Association="Self.FK_TbDetalleVenta_TbVenta1">
+            <End Role="TbVenta" EntitySet="TbVenta" />
+            <End Role="TbDetalleVenta" EntitySet="TbDetalleVenta" />
           </AssociationSet>
           <AssociationSet Name="FK_TbDevoluciònVenta_TbUsuario" Association="Self.FK_TbDevoluciònVenta_TbUsuario">
             <End Role="TbUsuario" EntitySet="TbUsuario" />
@@ -1369,89 +1420,7 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
             <End Role="TbUsuario" EntitySet="TbUsuario" />
             <End Role="TbVenta" EntitySet="TbVenta" />
           </AssociationSet>
-          <EntitySet Name="TbDetalleCompra" EntityType="TiendaLitosModel.TbDetalleCompra" />
-          <AssociationSet Name="FK_TbDetalleCompra_TbCompra1" Association="TiendaLitosModel.FK_TbDetalleCompra_TbCompra1">
-            <End Role="TbCompra" EntitySet="TbCompra" />
-            <End Role="TbDetalleCompra" EntitySet="TbDetalleCompra" />
-          </AssociationSet>
-          <EntitySet Name="TbDetalleVenta" EntityType="TiendaLitosModel.TbDetalleVenta" />
-          <AssociationSet Name="FK_TbDetalleVenta_TbArticuloBodega" Association="TiendaLitosModel.FK_TbDetalleVenta_TbArticuloBodega">
-            <End Role="TbArticuloBodega" EntitySet="TbArticuloBodega" />
-            <End Role="TbDetalleVenta" EntitySet="TbDetalleVenta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TbDetalleVenta_TbVenta1" Association="TiendaLitosModel.FK_TbDetalleVenta_TbVenta1">
-            <End Role="TbVenta" EntitySet="TbVenta" />
-            <End Role="TbDetalleVenta" EntitySet="TbDetalleVenta" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="TbDetalleCompra">
-          <Key>
-            <PropertyRef Name="IdDetalleCompra" />
-          </Key>
-          <Property Name="IdCompra" Type="Int32" />
-          <Property Name="IdArticulo" Type="Int32" />
-          <Property Name="Cantidad" Type="Double" />
-          <Property Name="Precio" Type="Double" />
-          <Property Name="Descuento" Type="Double" />
-          <Property Name="SubTotal" Type="Double" />
-          <Property Name="IdDetalleCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="TbCompra" Relationship="TiendaLitosModel.FK_TbDetalleCompra_TbCompra1" FromRole="TbDetalleCompra" ToRole="TbCompra" />
-        </EntityType>
-        <Association Name="FK_TbDetalleCompra_TbCompra1">
-          <End Type="TiendaLitosModel.TbCompra" Role="TbCompra" Multiplicity="0..1" />
-          <End Type="TiendaLitosModel.TbDetalleCompra" Role="TbDetalleCompra" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TbCompra">
-              <PropertyRef Name="IdCompra" />
-            </Principal>
-            <Dependent Role="TbDetalleCompra">
-              <PropertyRef Name="IdCompra" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="TbDetalleVenta">
-          <Key>
-            <PropertyRef Name="IdDetalleVenta" />
-          </Key>
-          <Property Name="IdVenta" Type="Int32" />
-          <Property Name="IdArticuloBodega" Type="Int32" />
-          <Property Name="DescripciónArticulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UdMedidaVenta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PrecioPorUnidad" Type="Double" />
-          <Property Name="Cantidad" Type="Double" />
-          <Property Name="PrecioVenta" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Descuento" Type="Double" />
-          <Property Name="Pago" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Cambio" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="IdDetalleVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="TbArticuloBodega" Relationship="TiendaLitosModel.FK_TbDetalleVenta_TbArticuloBodega" FromRole="TbDetalleVenta" ToRole="TbArticuloBodega" />
-          <NavigationProperty Name="TbVenta" Relationship="TiendaLitosModel.FK_TbDetalleVenta_TbVenta1" FromRole="TbDetalleVenta" ToRole="TbVenta" />
-        </EntityType>
-        <Association Name="FK_TbDetalleVenta_TbArticuloBodega">
-          <End Type="TiendaLitosModel.TbArticuloBodega" Role="TbArticuloBodega" Multiplicity="0..1" />
-          <End Type="TiendaLitosModel.TbDetalleVenta" Role="TbDetalleVenta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TbArticuloBodega">
-              <PropertyRef Name="IdArticuloBodega" />
-            </Principal>
-            <Dependent Role="TbDetalleVenta">
-              <PropertyRef Name="IdArticuloBodega" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TbDetalleVenta_TbVenta1">
-          <End Type="TiendaLitosModel.TbVenta" Role="TbVenta" Multiplicity="0..1" />
-          <End Type="TiendaLitosModel.TbDetalleVenta" Role="TbDetalleVenta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TbVenta">
-              <PropertyRef Name="IdVenta" />
-            </Principal>
-            <Dependent Role="TbDetalleVenta">
-              <PropertyRef Name="IdVenta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1498,6 +1467,7 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
                 <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
                 <ScalarProperty Name="Descuento" ColumnName="Descuento" />
                 <ScalarProperty Name="DescuentoMaximo" ColumnName="DescuentoMaximo" />
+                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1553,6 +1523,37 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
                 <ScalarProperty Name="ConfTelefono" ColumnName="ConfTelefono" />
                 <ScalarProperty Name="ConfDireccion" ColumnName="ConfDireccion" />
                 <ScalarProperty Name="ConfEncabezadoFactura" ColumnName="ConfEncabezadoFactura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TbDetalleCompra">
+            <EntityTypeMapping TypeName="TiendaLitosModel.TbDetalleCompra">
+              <MappingFragment StoreEntitySet="TbDetalleCompra">
+                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="IdDetalleCompra" ColumnName="IdDetalleCompra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TbDetalleVenta">
+            <EntityTypeMapping TypeName="TiendaLitosModel.TbDetalleVenta">
+              <MappingFragment StoreEntitySet="TbDetalleVenta">
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+                <ScalarProperty Name="DescripciónArticulo" ColumnName="DescripciónArticulo" />
+                <ScalarProperty Name="UdMedidaVenta" ColumnName="UdMedidaVenta" />
+                <ScalarProperty Name="PrecioPorUnidad" ColumnName="PrecioPorUnidad" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Pago" ColumnName="Pago" />
+                <ScalarProperty Name="Cambio" ColumnName="Cambio" />
+                <ScalarProperty Name="IdDetalleVenta" ColumnName="IdDetalleVenta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1698,37 +1699,6 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
               <MappingFragment StoreEntitySet="TbRolUsuario">
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="IdRol" ColumnName="IdRol" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TbDetalleCompra">
-            <EntityTypeMapping TypeName="TiendaLitosModel.TbDetalleCompra">
-              <MappingFragment StoreEntitySet="TbDetalleCompra">
-                <ScalarProperty Name="IdDetalleCompra" ColumnName="IdDetalleCompra" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
-                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TbDetalleVenta">
-            <EntityTypeMapping TypeName="TiendaLitosModel.TbDetalleVenta">
-              <MappingFragment StoreEntitySet="TbDetalleVenta">
-                <ScalarProperty Name="IdDetalleVenta" ColumnName="IdDetalleVenta" />
-                <ScalarProperty Name="Cambio" ColumnName="Cambio" />
-                <ScalarProperty Name="Pago" ColumnName="Pago" />
-                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="PrecioPorUnidad" ColumnName="PrecioPorUnidad" />
-                <ScalarProperty Name="UdMedidaVenta" ColumnName="UdMedidaVenta" />
-                <ScalarProperty Name="DescripciónArticulo" ColumnName="DescripciónArticulo" />
-                <ScalarProperty Name="IdArticuloBodega" ColumnName="IdArticuloBodega" />
-                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

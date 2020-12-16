@@ -54,7 +54,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Inicio</a></li>
-                        <li><a runat="server" href="~/Pages/Ventas">Ventas</a></li>
+                        <li><a runat="server" href="~/Pages/ListadoVentas">Ventas</a></li>
                         <li><a runat="server" href="~/Pages/ListadoCompras">Compras</a></li>
                         <li><a href="~/Pages/ArticuloBodega" runat="server">Articulos en Bodega</a></li>
                         <li class="dropdown">
