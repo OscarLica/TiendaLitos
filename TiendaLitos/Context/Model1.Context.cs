@@ -47,6 +47,7 @@ namespace TiendaLitos.Context
         public virtual DbSet<TbTipoMovimiento> TbTipoMovimiento { get; set; }
         public virtual DbSet<TbUsuario> TbUsuario { get; set; }
         public virtual DbSet<TbVenta> TbVenta { get; set; }
+        public virtual DbSet<TIPOMONEDA> TIPOMONEDA { get; set; }
         public virtual DbSet<TbRolUsuario> TbRolUsuario { get; set; }
     }
 }

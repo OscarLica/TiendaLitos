@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css" integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g==" crossorigin="anonymous" />
     <link href="Content/toastr.css" rel="stylesheet" />
     <link href="Scripts/dist/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="Content/dataTables.bootstrap4.min.css" rel="stylesheet" />
 </head>
 <body>
     <form runat="server">
@@ -56,6 +57,7 @@
                         <li><a runat="server" href="~/">Inicio</a></li>
                         <li><a runat="server" href="~/Pages/ListadoVentas">Ventas</a></li>
                         <li><a runat="server" href="~/Pages/ListadoCompras">Compras</a></li>
+                        <li><a runat="server" href="~/Pages/Reportes">Reportes</a></li>
                         <li><a href="~/Pages/ArticuloBodega" runat="server">Articulos en Bodega</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="nav-label">Catalogos</span> <span class="caret"></span></a>
@@ -63,6 +65,7 @@
                                 <li><a href="~/Pages/Categoria" runat="server">Categoria</a></li>
                                 <li><a href="~/Pages/SubCategoria" runat="server">Sub categoria</a></li>
                                 <li><a href="~/Pages/Articulo" runat="server">Articulo</a></li>
+                                <li><a href="~/Pages/TipoMoneda" runat="server">Tipo Moneda</a></li>
 
                             </ul>
                         </li>

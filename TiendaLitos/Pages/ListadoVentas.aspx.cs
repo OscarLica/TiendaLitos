@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -24,10 +26,46 @@ namespace TiendaLitos.Pages
 
         }
 
+
+        [WebMethod]
+        public static string ReporteVentas(CapaEntidades.ReporteRequest reporteRequest)
+        {
+            Warning[] warnings;
+            string[] streamids;
+            string mimeType;
+            string encoding;
+            string filenameExtension;
+
+            var datos = ServiceVenta.ReportVentas();
+            if (reporteRequest.FInicio != null && reporteRequest.FFinal != null)
+            {
+                datos = datos.Where(x => x.FechaVenta >= reporteRequest.FInicio.Value && x.FechaVenta <= reporteRequest.FFinal.Value).ToList();
+            }
+            else if (reporteRequest.FInicio != null) {
+                datos = datos.Where(x => x.FechaVenta == reporteRequest.FInicio.Value).ToList();
+            }
+            var path = "./Reports/ReportVentas/ReportVentas.rdlc";
+
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = path;
+            ReportDataSource ds = new ReportDataSource("DataSet1", datos);
+            localReport.DataSources.Add(ds);
+
+            byte[] bytes = localReport.Render("PDF", null, out mimeType, out filenameExtension, out encoding, out streamids, out warnings);
+            string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+        
+            return base64String;
+        }
+
         [WebMethod]
         public static List<CapaEntidades.Venta> ConsultarVentas()
         {
             return ServiceVenta.ConsultarVentas();
+        }
+        [WebMethod]
+        public static List<CapaEntidades.ReportVentas> ReportVentas()
+        {
+            return ServiceVenta.ReportVentas();
         }
     }
 }

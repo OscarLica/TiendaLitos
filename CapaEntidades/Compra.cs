@@ -16,7 +16,11 @@ namespace CapaEntidades
         public Nullable<double> Total { get; set; }
         public string NoFactura { get; set; }
         public string Proveedor { get; set; }
+        public string Moneda { get; set; }
+        public double TasaCambio { get; set; }
 
+        public double? SubTotalLocal { get; set; }
+        public double? TotalLocal { get; set; }
         public IQueryable<DetCompra> detalle { get; set; }
     }
 
@@ -31,5 +35,6 @@ namespace CapaEntidades
         public double? PrecioVenta { get; set; }
         public double? Descuento { get; set; }
         public double? SubTotalArticulo { get; set; }
+        public double? SubTotalArticuloLocal { get; set; }
     }
 }

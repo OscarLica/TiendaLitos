@@ -84,6 +84,7 @@
           <ScalarProperty Name="NoFactura" ColumnName="NoFactura" />
           <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdTipoMoneda" ColumnName="IdTipoMoneda" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -265,6 +266,17 @@
           <ScalarProperty Name="Anular" ColumnName="Anular" />
           <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
           <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+          <ScalarProperty Name="IdTipoMoneda" ColumnName="IdTipoMoneda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPOMONEDA">
+      <EntityTypeMapping TypeName="TiendaLitosModel.TIPOMONEDA">
+        <MappingFragment StoreEntitySet="TIPOMONEDA">
+          <ScalarProperty Name="IdTipoMoneda" ColumnName="IdTipoMoneda" />
+          <ScalarProperty Name="TMoneda" ColumnName="TMoneda" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="TasaCambio" ColumnName="TasaCambio" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -28,7 +28,8 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Iva aplicable</label>
-                                <input type="text" id="Iva" readonly class="form-control" placeholder="Iva aplicable" value="10" />
+                                <input type="number" min="0" id="Iva" class="form-control" data-venta="true" placeholder="Iva aplicable" value="10" required data-required="El campo Cliente es requerido" />
+                                <span class="text-danger" hidden id="span-Iva"></span>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -46,8 +47,15 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Cliente</label>
-                                <input type="text" data-venta="true" Id="Cliente" class="form-control" placeholder="Cliente" required data-required="El campo Cliente es requerido"/>
+                                <input type="text" data-venta="true" id="Cliente" class="form-control" placeholder="Cliente" required data-required="El campo Cliente es requerido" />
                                 <span class="text-danger" hidden id="span-Cliente"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Tipo de moneda</label>
+                                <select class="form-control" id="IdTipoMoneda" data-venta="true" required data-required="El campo Tipo de moneda es requerido"></select>
+                                <span class="text-danger" hidden id="span-IdTipoMoneda"></span>
                             </div>
                         </div>
 
@@ -68,7 +76,7 @@
                             <legend class="scheduler-border">Información del articulo
                             </legend>
                             <input id="IdDetalle" hidden data-detalle="true" />
-                            <div class="col-md-4">
+                            <div class="col-md-8">
                                 <div class="form-group">
                                     <label>Articulo</label>
                                     <select class="form-control" id="IdArticulo" data-detalle="true" required data-required="El campo Articulo es requerido"></select>
@@ -78,32 +86,32 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Medida</label>
-                                    <input class="form-control" readonly id="Medida" data-inf="true"/>
+                                    <input class="form-control" readonly id="Medida" data-inf="true" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Marca</label>
-                                    <input class="form-control" readonly id="Marca" data-inf="true"/>
+                                    <input class="form-control" readonly id="Marca" data-inf="true" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Color</label>
-                                    <input class="form-control" readonly id="Color" data-inf="true"/>
+                                    <input class="form-control" readonly id="Color" data-inf="true" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Talla</label>
-                                    <input class="form-control" readonly id="Talla" data-inf="true"/>
+                                    <input class="form-control" readonly id="Talla" data-inf="true" />
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset class="scheduler-border">
                             <legend class="scheduler-border">Datos de venta
                             </legend>
-                             <div class="col-md-4">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Cantidad</label>
                                     <input type="number" data-calculate="true" id="Cantidad" min="0" data-calculate="true" class="form-control" data-detalle="true" data-only-number="true" placeholder="0" required data-required="El campo Cantidad es requerido" />
@@ -154,7 +162,7 @@
                                     <span class="text-danger" hidden id="span-Pago"></span>
                                 </div>
                             </div>
-                             <div class="col-md-4">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Cambio</label>
                                     <input type="text" readonly id="Cambio" class="form-control" data-detalle="true" placeholder="0.00" required data-required="El campo Cambio es requerido" />
@@ -172,6 +180,7 @@
                                     <th>Precio</th>
                                     <th>Descuento</th>
                                     <th>Sub total</th>
+                                    <th>Sub total (local)</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>

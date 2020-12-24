@@ -83,6 +83,7 @@
           <Property Name="NoFactura" Type="nvarchar" MaxLength="50" />
           <Property Name="IdProveedor" Type="int" />
           <Property Name="IdUsuario" Type="int" />
+          <Property Name="IdTipoMoneda" Type="int" />
         </EntityType>
         <EntityType Name="TbConfiguración">
           <Key>
@@ -258,6 +259,16 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
           <Property Name="Anular" Type="bit" />
           <Property Name="SubTotal" Type="float" />
           <Property Name="NombreCliente" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdTipoMoneda" Type="int" />
+        </EntityType>
+        <EntityType Name="TIPOMONEDA">
+          <Key>
+            <PropertyRef Name="IdTipoMoneda" />
+          </Key>
+          <Property Name="IdTipoMoneda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TMoneda" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="TasaCambio" Type="float" />
         </EntityType>
         <Association Name="FK_TbArticulo_TbSubCategoria">
           <End Role="TbSubCategoria" Type="Self.TbSubCategoria" Multiplicity="0..1" />
@@ -582,6 +593,7 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
           <EntitySet Name="TbTipoMovimiento" EntityType="Self.TbTipoMovimiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TbUsuario" EntityType="Self.TbUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TbVenta" EntityType="Self.TbVenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPOMONEDA" EntityType="Self.TIPOMONEDA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TbRolUsuario" EntityType="Self.TbRolUsuario" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [TbRolUsuario].[IdUsuario] AS [IdUsuario], 
@@ -789,6 +801,7 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
           <Property Name="NoFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdProveedor" Type="Int32" />
           <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="IdTipoMoneda" Type="Int32" />
           <NavigationProperty Name="TbProveedor" Relationship="Self.FK_TbCompra_TbProveedor" FromRole="TbCompra" ToRole="TbProveedor" />
           <NavigationProperty Name="TbUsuario" Relationship="Self.FK_TbCompra_TbUsuario" FromRole="TbCompra" ToRole="TbUsuario" />
           <NavigationProperty Name="TbDetalleCompra" Relationship="Self.FK_TbDetalleCompra_TbCompra1" FromRole="TbCompra" ToRole="TbDetalleCompra" />
@@ -982,10 +995,20 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
           <Property Name="Anular" Type="Boolean" />
           <Property Name="SubTotal" Type="Double" />
           <Property Name="NombreCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdTipoMoneda" Type="Int32" />
           <NavigationProperty Name="TbDetalleVenta" Relationship="Self.FK_TbDetalleVenta_TbVenta1" FromRole="TbVenta" ToRole="TbDetalleVenta" />
           <NavigationProperty Name="TbDevoluciònVenta" Relationship="Self.FK_TbDevoluciònVenta_TbVenta" FromRole="TbVenta" ToRole="TbDevoluciònVenta" />
           <NavigationProperty Name="TbPromoción" Relationship="Self.FK_TbVenta_TbPromoción" FromRole="TbVenta" ToRole="TbPromoción" />
           <NavigationProperty Name="TbUsuario" Relationship="Self.FK_TbVenta_TbUsuario" FromRole="TbVenta" ToRole="TbUsuario" />
+        </EntityType>
+        <EntityType Name="TIPOMONEDA">
+          <Key>
+            <PropertyRef Name="IdTipoMoneda" />
+          </Key>
+          <Property Name="IdTipoMoneda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TMoneda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="TasaCambio" Type="Double" />
         </EntityType>
         <EntityType Name="TbRolUsuario">
           <Key>
@@ -1319,6 +1342,7 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
           <EntitySet Name="TbTipoMovimiento" EntityType="Self.TbTipoMovimiento" />
           <EntitySet Name="TbUsuario" EntityType="Self.TbUsuario" />
           <EntitySet Name="TbVenta" EntityType="Self.TbVenta" />
+          <EntitySet Name="TIPOMONEDA" EntityType="Self.TIPOMONEDA" />
           <EntitySet Name="TbRolUsuario" EntityType="Self.TbRolUsuario" />
           <AssociationSet Name="FK_TbArticulo_TbSubCategoria" Association="Self.FK_TbArticulo_TbSubCategoria">
             <End Role="TbSubCategoria" EntitySet="TbSubCategoria" />
@@ -1510,6 +1534,7 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
                 <ScalarProperty Name="NoFactura" ColumnName="NoFactura" />
                 <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdTipoMoneda" ColumnName="IdTipoMoneda" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1691,6 +1716,17 @@ advertencia 6002: La tabla o vista 'TiendaLitos.dbo.TbRolUsuario' no tiene defin
                 <ScalarProperty Name="Anular" ColumnName="Anular" />
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
                 <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="IdTipoMoneda" ColumnName="IdTipoMoneda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOMONEDA">
+            <EntityTypeMapping TypeName="TiendaLitosModel.TIPOMONEDA">
+              <MappingFragment StoreEntitySet="TIPOMONEDA">
+                <ScalarProperty Name="IdTipoMoneda" ColumnName="IdTipoMoneda" />
+                <ScalarProperty Name="TMoneda" ColumnName="TMoneda" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="TasaCambio" ColumnName="TasaCambio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

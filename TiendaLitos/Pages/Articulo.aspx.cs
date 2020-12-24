@@ -46,7 +46,6 @@ namespace TiendaLitos.Pages
         [WebMethod]
         public static Result UpdateArticulo(TbArticulo articulo)
         {
-            ServiceArticulo.UpdateArticulo(articulo);
             return ServiceArticulo.UpdateArticulo(articulo);
         }
     }

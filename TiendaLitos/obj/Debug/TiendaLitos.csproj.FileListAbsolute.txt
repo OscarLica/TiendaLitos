@@ -1,3 +1,11 @@
+C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\obj\Debug\TiendaLitos.csprojAssemblyReference.cache
+C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\obj\Debug\RdlCompile.cache
+C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\obj\Debug\RdlCompile.compiled
+C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\SqlServerTypes\x64\msvcr120.dll
+C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
+C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\SqlServerTypes\x86\msvcr120.dll
+C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\SqlServerTypes\x86\SqlServerSpatial140.dll
+C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Reports\ReportVentas\ReportVentas.rdlc
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\TiendaLitos.dll.config
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\TiendaLitos.dll
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\TiendaLitos.pdb
@@ -56,8 +64,12 @@ C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\EntityFramework.SqlServer
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Microsoft.AspNet.FriendlyUrls.dll
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Microsoft.ReportViewer.Common.dll
+C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Microsoft.ReportViewer.WebForms.DLL
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Microsoft.ScriptManager.MSAjax.dll
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Microsoft.ScriptManager.WebForms.dll
+C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Microsoft.SqlServer.Types.dll
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Newtonsoft.Json.dll
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\System.Web.Optimization.dll
@@ -72,7 +84,6 @@ C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Microsoft.AspNet.Friendly
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\es\System.Web.Optimization.resources.dll
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
-C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\obj\Debug\TiendaLitos.csprojAssemblyReference.cache
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\obj\Debug\TiendaLitos.csproj.CopyComplete
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\obj\Debug\TiendaLitos.dll
 C:\Users\1234\source\repos\TiendaLitos\TiendaLitos\obj\Debug\TiendaLitos.pdb

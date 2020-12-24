@@ -1,4 +1,5 @@
 ﻿$(function () {
+    var tasaCambio = 0;
     var today = new Date();
     var anio = today.getFullYear();
     var month = today.getMonth();
@@ -9,6 +10,7 @@
     var articulos = [];
     var esEdicion = false;
     GetAllArticulos();
+    GetAllTipoMoneda();
     function GetAllArticulos() {
         HttpClient.Get("ArticuloBodega.aspx/GetAllArticulosBodega").then((response) => {
             articulos = response.d;
@@ -17,14 +19,28 @@
             $(cmbArticulo).append("<option value=''>[Seleccione una opción]</option>");
             $.each(response.d, function (i, item) {
                 if (item.Estado) {
-                    $(cmbArticulo).append("<option value=" + item.IdArticuloBodega + ">" + item.Articulo + "</option>");
+
+                    $(cmbArticulo).append("<option value=" + item.IdArticuloBodega + ">" + item.Articulo + ", <b>Color</b> : " + item.Color + " Marca : " + item.Marca + " Talla : " + item.Talla+" Precio : " + item.PrecioPorUnida+"</option > ");
                 }
             });
 
             $(cmbArticulo).selectpicker();
         });
     }
+    function GetAllTipoMoneda() {
+        HttpClient.Get("TipoMoneda.aspx/GetAllTipoMoneda").then((response) => {
+            var cmb = $("#IdTipoMoneda");
+            $(cmb).empty();
+            $(cmb).append("<option value=''>[Seleccione una opción]</option>");
+            $.each(response.d, function (i, item) {
+                if (item.Activo) {
+                    $(cmb).append("<option value=" + item.IdTipoMoneda + ">" + item.TMoneda + "</option>");
+                }
+            });
 
+            $(cmb).selectpicker();
+        });
+    }
     $(document).on("change", "#IdArticulo", function () {
         var Id = +this.value;
         var articulo = articulos.find((r) => { return r.IdArticuloBodega === Id; });
@@ -38,7 +54,14 @@
             }
         });
     });
+    $(document).on("change", "#IdTipoMoneda", function () {
+        var params = "{IdTipoMoneda : '" + (+this.value) + "'}";
+        HttpClient.GetBy("TipoMoneda.aspx/GetTipoMonedaById", params).then((response) => {
+            var data = response.d;
+            tasaCambio = data.TasaCambio;
+        });
 
+    });
     $(document).on("click", "button[data-vender]", function () {
         var controles = $("input[data-detalle], select[data-detalle]");
         var valido = ValidarForm(controles);
@@ -205,7 +228,7 @@
         venta.SubTotalVenta = $("#SubTotalVenta").val();
         venta.TotalVenta = $("#TotalVenta").val();
         venta.Cliente = $("#Cliente").val();
-
+        venta.IdTipoMoneda = $("#IdTipoMoneda").val();
         VentaArticulos.Venta = venta;
         VentaArticulos.DetalleVenta = detalleVenta;
 
@@ -224,7 +247,7 @@
         var row = "";
         $.each(detalleVenta, function (i, item) {
             var articulo = articulos.find((art) => art.IdArticuloBodega === + item.IdArticulo);
-            row += "<tr><td>" + articulo.Articulo + "</td><td>" + item.Cantidad + "</td><td>C$ " + item.PrecioVenta + "</td><td>% " + item.Descuento + "</td><td>C$ " + item.SubTotalArticulo + "</td><td><button type='button' class='btn btn-primary' data-accion-editar='" + item.IdDetalle + "'>" + Utilidades.IconEdit() + "</button> &nbsp; <button type='button' class='btn btn-danger' data-accion-eliminar='" + item.IdDetalle + "'>" + Utilidades.IconTrash() + "</button></td> </tr>";
+            row += "<tr><td>" + articulo.Articulo + "</td><td>" + item.Cantidad + "</td><td>C$ " + item.PrecioVenta + "</td><td>% " + item.Descuento + "</td><td>C$ " + item.SubTotalArticulo + "</td><td>C$ " + item.SubTotalArticulo * (tasaCambio === 0 ? 1 : tasaCambio) + "</td><td><button type='button' class='btn btn-primary' data-accion-editar='" + item.IdDetalle + "'>" + Utilidades.IconEdit() + "</button> &nbsp; <button type='button' class='btn btn-danger' data-accion-eliminar='" + item.IdDetalle + "'>" + Utilidades.IconTrash() + "</button></td> </tr>";
         });
         $("#result").html(row);
     }

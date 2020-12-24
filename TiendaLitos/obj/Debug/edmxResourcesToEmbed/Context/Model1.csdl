@@ -95,6 +95,7 @@
     <Property Name="NoFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IdProveedor" Type="Int32" />
     <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdTipoMoneda" Type="Int32" />
     <NavigationProperty Name="TbProveedor" Relationship="Self.FK_TbCompra_TbProveedor" FromRole="TbCompra" ToRole="TbProveedor" />
     <NavigationProperty Name="TbUsuario" Relationship="Self.FK_TbCompra_TbUsuario" FromRole="TbCompra" ToRole="TbUsuario" />
     <NavigationProperty Name="TbDetalleCompra" Relationship="Self.FK_TbDetalleCompra_TbCompra1" FromRole="TbCompra" ToRole="TbDetalleCompra" />
@@ -288,10 +289,20 @@
     <Property Name="Anular" Type="Boolean" />
     <Property Name="SubTotal" Type="Double" />
     <Property Name="NombreCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdTipoMoneda" Type="Int32" />
     <NavigationProperty Name="TbDetalleVenta" Relationship="Self.FK_TbDetalleVenta_TbVenta1" FromRole="TbVenta" ToRole="TbDetalleVenta" />
     <NavigationProperty Name="TbDevoluciònVenta" Relationship="Self.FK_TbDevoluciònVenta_TbVenta" FromRole="TbVenta" ToRole="TbDevoluciònVenta" />
     <NavigationProperty Name="TbPromoción" Relationship="Self.FK_TbVenta_TbPromoción" FromRole="TbVenta" ToRole="TbPromoción" />
     <NavigationProperty Name="TbUsuario" Relationship="Self.FK_TbVenta_TbUsuario" FromRole="TbVenta" ToRole="TbUsuario" />
+  </EntityType>
+  <EntityType Name="TIPOMONEDA">
+    <Key>
+      <PropertyRef Name="IdTipoMoneda" />
+    </Key>
+    <Property Name="IdTipoMoneda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TMoneda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="TasaCambio" Type="Double" />
   </EntityType>
   <EntityType Name="TbRolUsuario">
     <Key>
@@ -625,6 +636,7 @@
     <EntitySet Name="TbTipoMovimiento" EntityType="Self.TbTipoMovimiento" />
     <EntitySet Name="TbUsuario" EntityType="Self.TbUsuario" />
     <EntitySet Name="TbVenta" EntityType="Self.TbVenta" />
+    <EntitySet Name="TIPOMONEDA" EntityType="Self.TIPOMONEDA" />
     <EntitySet Name="TbRolUsuario" EntityType="Self.TbRolUsuario" />
     <AssociationSet Name="FK_TbArticulo_TbSubCategoria" Association="Self.FK_TbArticulo_TbSubCategoria">
       <End Role="TbSubCategoria" EntitySet="TbSubCategoria" />

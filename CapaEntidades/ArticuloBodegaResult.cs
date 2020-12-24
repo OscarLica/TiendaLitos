@@ -6,6 +6,7 @@ namespace CapaEntidades
 {
     public class ArticuloBodegaResult
     {
+        public string Bodega { get; set; }
         public int IdArticuloBodega { get; set; }
         public int IdArticulo { get; set; }
         public string Articulo { get; set; }

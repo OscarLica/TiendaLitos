@@ -29,6 +29,7 @@ namespace TiendaLitos.Context
         public string NoFactura { get; set; }
         public Nullable<int> IdProveedor { get; set; }
         public Nullable<int> IdUsuario { get; set; }
+        public Nullable<int> IdTipoMoneda { get; set; }
     
         public virtual TbProveedor TbProveedor { get; set; }
         public virtual TbUsuario TbUsuario { get; set; }

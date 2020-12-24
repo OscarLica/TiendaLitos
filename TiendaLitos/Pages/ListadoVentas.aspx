@@ -18,13 +18,17 @@
 
                     </div>
                     <div class="card-body">
+                        <input class="form-control" placeholder="Ingrese el valor a buscar" data-search="true"/>
                         <table class="table table-hover table-stripped table-responsive">
                             <thead>
                                 <tr>
                                     <th>Fecha de venta</th>
+                                    <th>Monde venta</th>
                                     <th>Iva</th>
                                     <th>Sub total</th>
+                                    <th>Sub total (local)</th>
                                     <th>Total</th>
+                                    <th>Total (local)</th>
                                     <th>Cliente</th>
                                     <th>Detalle</th>
                                 </tr>

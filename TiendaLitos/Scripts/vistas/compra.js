@@ -1,4 +1,5 @@
 ﻿$(function () {
+    var tasaCambio = 1;
     var detalleCompra = [];
     var compra = {};
     var articulos = [];
@@ -16,6 +17,7 @@
     GetAllColor();
     GetAllTalla();
     GetAllProveedores();
+    GetAllTipoMoneda();
     function GetAllArticulos() {
         HttpClient.Get("Articulo.aspx/GetAllArticulos").then((response) => {
             articulos = response.d;
@@ -31,6 +33,28 @@
             $(cmbArticulo).selectpicker();
         });
     }
+    function GetAllTipoMoneda() {
+        HttpClient.Get("TipoMoneda.aspx/GetAllTipoMoneda").then((response) => {
+            var cmb = $("#IdTipoMoneda");
+            $(cmb).empty();
+            $(cmb).append("<option value=''>[Seleccione una opción]</option>");
+            $.each(response.d, function (i, item) {
+                if (item.Activo) {
+                    $(cmb).append("<option value=" + item.IdTipoMoneda + ">" + item.TMoneda + "</option>");
+                }
+            });
+
+            $(cmb).selectpicker();
+        });
+    }
+    $(document).on("change", "#IdTipoMoneda", function () {
+        var params = "{IdTipoMoneda : '" + (+this.value) + "'}";
+        HttpClient.GetBy("TipoMoneda.aspx/GetTipoMonedaById", params).then((response) => {
+            var data = response.d;
+            tasaCambio = data.TasaCambio;
+        });
+
+    });
 
     function GetAllProveedores() {
         HttpClient.Get("Compras.aspx/GetAllProveedores").then((response) => {
@@ -220,7 +244,7 @@
         var row = "";
         $.each(detalleCompra, function (i, item) {
             var articulo = articulos.find((art) => art.IdArticulo === + item.IdArticulo);
-            row += "<tr><td>" + articulo.NombreArticulo + "</td><td>" + item.Cantidad + "</td><td>C$ " + item.Precio + "</td><td>% " + item.Descuento + "</td><td>C$ " + item.SubTotalArticulo + "</td><td><button type='button' class='btn btn-primary' data-accion-editar='" + item.IdDetalle + "'>" + Utilidades.IconEdit() + "</button> &nbsp; <button type='button' class='btn btn-danger' data-accion-eliminar='" + item.IdDetalle + "'>" + Utilidades.IconTrash() + "</button></td> </tr>";
+            row += "<tr><td>" + articulo.NombreArticulo + "</td><td>" + item.Cantidad + "</td><td>C$ " + item.Precio + "</td><td>% " + item.Descuento + "</td><td>C$ " + item.SubTotalArticulo + "</td><td>C$ " + (item.SubTotalArticulo * (tasaCambio === 0 ? 1 : tasaCambio)) + "</td><td><button type='button' class='btn btn-primary' data-accion-editar='" + item.IdDetalle + "'>" + Utilidades.IconEdit() + "</button> &nbsp; <button type='button' class='btn btn-danger' data-accion-eliminar='" + item.IdDetalle + "'>" + Utilidades.IconTrash() + "</button></td> </tr>";
         });
         $("#result").html(row);
     }
@@ -233,9 +257,16 @@
         compra.SubTotalCompra = $("#SubTotalCompra").val();
         compra.TotalCompra = $("#TotalCompra").val();
         compra.IdProveedor = $("#IdProveedor").val();
+        compra.IdTipoMoneda = $("#IdTipoMoneda").val();
 
+        $.each(detalleCompra, function (i, item) {
+
+            item.IdBodega = $("#IdBodega").val();
+
+        });
         CompraArticulos.Compra = compra;
         CompraArticulos.DetalleCompra = detalleCompra;
+
         $("#IdProveedor").selectpicker("refresh");
         HttpClient.Post("Compras.aspx/Comprar", JSON.stringify({ compraRequest : CompraArticulos})).then((response) => {
 

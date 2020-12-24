@@ -35,7 +35,8 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Iva aplicable</label>
-                                <input type="text" id="Iva" readonly class="form-control" placeholder="Iva aplicable" value="10" />
+                                <input type="number" id="Iva" class="form-control" placeholder="Iva aplicable" value="10" min="0" data-compra="true" required data-required="El campo Iva es requerido"/>
+                                <span class="text-danger" hidden id="span-Iva"></span>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -57,7 +58,20 @@
                                 <span class="text-danger" hidden id="span-IdProveedor"></span>
                             </div>
                         </div>
-
+                         <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Bodega</label>
+                                    <select class="form-control" id="IdBodega" data-compra="true" required data-required="El campo Bodega es requerido"></select>
+                                    <span class="text-danger" hidden id="span-IdBodega"></span>
+                                </div>
+                            </div>
+                        <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Tipo de moneda</label>
+                                    <select class="form-control" id="IdTipoMoneda" data-compra="true" required data-required="El campo Tipo de moneda es requerido"></select>
+                                    <span class="text-danger" hidden id="span-IdTipoMoneda"></span>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -80,13 +94,6 @@
                                     <label>Árticulo</label>
                                     <select class="form-control" id="IdArticulo" data-detalle="true" required data-required="El campo Árticulo es requerido"></select>
                                     <span class="text-danger" hidden id="span-IdArticulo"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Bodega</label>
-                                    <select class="form-control" id="IdBodega" data-detalle="true" required data-required="El campo Bodega es requerido"></select>
-                                    <span class="text-danger" hidden id="span-IdBodega"></span>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -168,6 +175,7 @@
                                     <th>Precio</th>
                                     <th>Descuento</th>
                                     <th>Sub total</th>
+                                    <th>Sub total(moneda local)</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>

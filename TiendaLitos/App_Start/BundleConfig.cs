@@ -25,7 +25,8 @@ namespace TiendaLitos
                             "~/Scripts/Utilidades.js",
                             "~/Scripts/toastr.min.js",
                             "~/Scripts/dist/js/bootstrap-select.min.js",
-                            "~/Scripts/dist/js/i18n/defaults-es_ES.js"));
+                            "~/Scripts/dist/js/i18n/defaults-es_ES.js",
+                            "~/Scripts/jquery.dataTables.min.js"));
 
             // El orden es muy importante para el funcionamiento de estos archivos ya que tienen dependencias explícitas
             bundles.Add(new ScriptBundle("~/bundles/MsAjaxJs").Include(

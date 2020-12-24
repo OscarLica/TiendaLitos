@@ -12,7 +12,11 @@ namespace CapaEntidades
         public double? Iva { get; set; }
         public double? SubTotal { get; set; }
         public double? Total { get; set; }
+        public double? SubTotalLocal { get; set; }
+        public double? TotalLocal { get; set; }
         public string Cliente { get; set; }
+        public string Moneda { get; set; }
+        public double TasaCambio { get; set; }
         public List<DetVenta> detalle { get; set; }
     }
     public class DetVenta {
@@ -25,5 +29,7 @@ namespace CapaEntidades
         public decimal? Precio { get; set; }
         public double? Descuento { get; set; }
         public decimal? SubTotal { get; set; }
+        public decimal? SubTotalLocal { get; set; }
+
     }
 }

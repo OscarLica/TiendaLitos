@@ -16,6 +16,33 @@ namespace TiendaLitos.Service
             _Context = Context;
         }
 
+        public List<Compra> ReportCompras()
+        {
+            var compras = (from v in _Context.TbCompra
+                           join moneda in _Context.TIPOMONEDA on  v.IdTipoMoneda equals moneda.IdTipoMoneda
+                          join de in _Context.TbDetalleCompra on v.IdCompra equals de.IdCompra
+                          join proveedor in _Context.TbProveedor on v.IdProveedor equals proveedor.IdProveedor
+                          select new Compra
+                          {
+                              IdCompra = v.IdCompra,
+                              FechaCompra = v.FechaCompra,
+                              NoFactura = v.NoFactura,
+                              Iva = v.Iva,
+                              SubTotal = v.SubTotal,
+                              Total = v.Total,
+                              Proveedor = proveedor.NombreEmpresa,
+                              Moneda = moneda.TMoneda,
+                              TasaCambio = moneda.TasaCambio ?? default
+                          }
+                          ).ToList();
+            foreach (var item in compras)
+            {
+                item.Fecha = item.FechaCompra.Value.ToShortDateString();
+                item.SubTotalLocal = item.TasaCambio == default ? item.SubTotal : item.SubTotal * item.TasaCambio;
+                item.TotalLocal = item.TasaCambio == default ? item.Total : item.Total * item.TasaCambio;
+            }
+            return compras;
+        }
         public List<Proveedor> GetAllProveedores()
         {
             var proveedores = _Context.TbProveedor.Select(x => new Proveedor
@@ -53,7 +80,8 @@ namespace TiendaLitos.Service
                         SubTotal = compraRequest.Compra.SubTotalCompra,
                         Iva = compraRequest.Compra.Iva,
                         Total = compraRequest.Compra.TotalCompra,
-                        NoFactura = $"{fechaActual.Year}{fechaActual.Month}{fechaActual.Day}{nCompras}"
+                        NoFactura = $"{fechaActual.Year}{fechaActual.Month}{fechaActual.Day}{nCompras}",
+                        IdTipoMoneda = compraRequest.Compra.IdTipoMoneda
                     };
                     _Context.TbCompra.Add(compra);
                     _Context.SaveChanges();
@@ -111,6 +139,7 @@ namespace TiendaLitos.Service
         {
             var compras = (from c in _Context.TbCompra
                            join pro in _Context.TbProveedor on c.IdProveedor equals pro.IdProveedor
+                           join moneda in _Context.TIPOMONEDA on c.IdTipoMoneda equals moneda.IdTipoMoneda
                            let detalle = (from de in _Context.TbDetalleCompra
                                           join ad in _Context.TbArticuloBodega on de.IdCompra equals ad.IdCompra
                                           join a in _Context.TbArticulo on de.IdArticulo equals a.IdArticulo
@@ -142,6 +171,8 @@ namespace TiendaLitos.Service
                                SubTotal = c.SubTotal,
                                Total = c.Total,
                                Proveedor = pro.NombreEmpresa,
+                               Moneda = moneda.TMoneda,
+                               TasaCambio = moneda.TasaCambio ?? default,
                                detalle = detalle
                            });
 
@@ -149,6 +180,12 @@ namespace TiendaLitos.Service
             foreach (var item in compras)
             {
                 item.Fecha = item.FechaCompra.Value.ToShortDateString();
+                item.SubTotalLocal = item.TasaCambio == default ? item.SubTotal : item.SubTotal * item.TasaCambio;
+                item.TotalLocal = item.TasaCambio == default ? item.Total : item.Total * item.TasaCambio;
+                foreach (var det in item.detalle)
+                {
+                    det.SubTotalArticuloLocal = item.TasaCambio == default ? det.SubTotalArticulo : det.SubTotalArticulo * item.TasaCambio;
+                }
                 result.Add(item);
             }
 

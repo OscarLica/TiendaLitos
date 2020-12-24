@@ -30,6 +30,7 @@ namespace TiendaLitos.Context
         public Nullable<bool> Anular { get; set; }
         public Nullable<double> SubTotal { get; set; }
         public string NombreCliente { get; set; }
+        public Nullable<int> IdTipoMoneda { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TbDetalleVenta> TbDetalleVenta { get; set; }

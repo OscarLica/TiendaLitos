@@ -16,6 +16,7 @@ namespace CapaEntidades
         public double SubTotalVenta { get; set; }
         public double TotalVenta { get; set; }
         public string Cliente { get; set; }
+        public int IdTipoMoneda { get; set; }
     }
 
     public class DetalleVenta

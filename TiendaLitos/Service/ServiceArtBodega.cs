@@ -41,6 +41,34 @@ namespace TiendaLitos.Service
 
             return result;
         }
+
+        public List<ArticuloBodegaResult> GetAllArticulosBodegaReporte()
+        {
+
+            var result = (from ab in _Context.TbArticuloBodega
+                          join b in _Context.TbBodega on ab.IdBodega equals b.IdBodega
+                          join a in _Context.TbArticulo on ab.IdArticulo equals a.IdArticulo
+                          join c in _Context.TbColor on ab.IdColor equals c.IdColor
+                          join t in _Context.TbTalla on ab.IdTalla equals t.IdTalla
+                          join m in _Context.TbMedida on ab.IdMedida equals m.IdMedida
+                          join ma in _Context.TbMarca on ab.IdMedida equals ma.IdMarca
+                          select new ArticuloBodegaResult
+                          {
+                              Bodega = b.Bodega,
+                              Articulo = a.NombreArticulo,
+                              Color = c.NombreColor,
+                              Existencia = ab.Existencia,
+                              IdArticulo = ab.IdArticulo ?? default,
+                              IdArticuloBodega = ab.IdArticuloBodega,
+                              Marca = ma.NombreMarca,
+                              Medida = m.NombreMedida,
+                              Talla = t.NombreTalla,
+                              Estado = a.Estado ?? default,
+                              PrecioPorUnida = ab.PrecioVenta
+                          }).ToList();
+
+            return result;
+        }
         public List<ArtBodega> GetArticulosBodega()
         {
 

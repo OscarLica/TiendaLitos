@@ -19,14 +19,18 @@
 
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover table-stripped table-responsive">
+                        <input class="form-control" placeholder="Ingrese el valor a buscar" data-search="true"/>
+                        <table class="table table-hover table-stripped table-responsive" id="tbCompra">
                             <thead>
                                 <tr>
                                     <th>Nº de factura</th>
                                     <th>Fecha de compra</th>
+                                    <th>Moneda compra</th>
                                     <th>Iva</th>
                                     <th>Sub total</th>
+                                    <th>Sub total (local)</th>
                                     <th>Total</th>
+                                    <th>Total (local)</th>
                                     <th>Proveedor</th>
                                     <th>Detalle</th>
                                 </tr>
@@ -62,6 +66,7 @@
                                 <th>Precio </th>
                                 <th>Descuento </th>
                                 <th>Sub Total </th>
+                                <th>Sub Total (local) </th>
                             </tr>
                         </thead>
                         <tbody id="resultDetalle">
@@ -75,5 +80,6 @@
             </div>
         </div>
     </div>
+    <script src="../Scripts/jquery.dataTables.min.js"></script>
     <script src="../Scripts/vistas/listadocompras.js"></script>
 </asp:Content>
