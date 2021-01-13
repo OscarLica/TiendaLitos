@@ -153,14 +153,14 @@ namespace TiendaLitos.Service
                                           select new DetCompra
                                           {
                                               Articulo = grupo.Key.NombreArticulo,
-                                              Cantidad = grupo.FirstOrDefault().de.Cantidad,
-                                              Descuento = grupo.FirstOrDefault().de.Descuento,
+                                              Cantidad = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? 0 : grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).de.Cantidad,
+                                              Descuento = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? 0: grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).de.Descuento,
                                               Precio = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? 0 : grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).de.Precio,
                                               SubTotalArticulo = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? 0 : grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).de.SubTotal,
-                                              Color = grupo.FirstOrDefault().co.NombreColor,
-                                              Marca = grupo.FirstOrDefault().ma.NombreMarca,
-                                              Talla = grupo.FirstOrDefault().t.NombreTalla,
-                                              Medida = grupo.FirstOrDefault().m.NombreMedida
+                                              Color = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? "":grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).co.NombreColor,
+                                              Marca = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? "" : grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).ma.NombreMarca,
+                                              Talla = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? "" : grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).t.NombreTalla,
+                                              Medida = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? "" : grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).m.NombreMedida
                                           })
                            select new Compra
                            {
