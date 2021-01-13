@@ -9,6 +9,7 @@
     var venta = {};
     var articulos = [];
     var esEdicion = false;
+    var existenciaProducto = 0;
     GetAllArticulos();
     GetAllTipoMoneda();
     function GetAllArticulos() {
@@ -45,6 +46,7 @@
         var Id = +this.value;
         var articulo = articulos.find((r) => { return r.IdArticuloBodega === Id; });
         var controles = $("input[data-inf]");
+        existenciaProducto = +articulo.Existencia;
         $.each(controles, function (i, item) {
             if (!articulo) {
                 $(item).val("");
@@ -54,6 +56,14 @@
             }
         });
     });
+
+    $(document).on("keyup", "#Cantidad", function () {
+        if (this.value > existenciaProducto) {
+            toastr.error("Cantidad maxima para este producto es de " + existenciaProducto);
+            $("#Cantidad").val(0);
+        }
+    });
+
     $(document).on("change", "#IdTipoMoneda", function () {
         var params = "{IdTipoMoneda : '" + (+this.value) + "'}";
         HttpClient.GetBy("TipoMoneda.aspx/GetTipoMonedaById", params).then((response) => {

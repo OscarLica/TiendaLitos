@@ -142,21 +142,21 @@ namespace TiendaLitos.Service
                            join moneda in _Context.TIPOMONEDA on c.IdTipoMoneda equals moneda.IdTipoMoneda
                            let detalle = (from de in _Context.TbDetalleCompra
                                           join ad in _Context.TbArticuloBodega on de.IdCompra equals ad.IdCompra
-                                          join a in _Context.TbArticulo on de.IdArticulo equals a.IdArticulo
+                                          join a in _Context.TbArticulo on ad.IdArticulo equals a.IdArticulo
                                           join co in _Context.TbColor on ad.IdColor equals co.IdColor
                                           join m in _Context.TbMedida on ad.IdMedida equals m.IdMedida
                                           join ma in _Context.TbMarca on ad.IdMarca equals ma.IdMarca
                                           join t in _Context.TbTalla on ad.IdTalla equals t.IdTalla
                                           where de.IdCompra == c.IdCompra
-                                          group new {de, ad, a, co, m, ma, t} by a.NombreArticulo
+                                          group new {de, ad, a, co, m, ma, t} by new { a.NombreArticulo, a.IdArticulo }
                                           into grupo
                                           select new DetCompra
                                           {
-                                              Articulo = grupo.Key,
+                                              Articulo = grupo.Key.NombreArticulo,
                                               Cantidad = grupo.FirstOrDefault().de.Cantidad,
                                               Descuento = grupo.FirstOrDefault().de.Descuento,
-                                              Precio = grupo.FirstOrDefault().de.Precio,
-                                              SubTotalArticulo = grupo.FirstOrDefault().de.SubTotal,
+                                              Precio = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? 0 : grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).de.Precio,
+                                              SubTotalArticulo = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? 0 : grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).de.SubTotal,
                                               Color = grupo.FirstOrDefault().co.NombreColor,
                                               Marca = grupo.FirstOrDefault().ma.NombreMarca,
                                               Talla = grupo.FirstOrDefault().t.NombreTalla,
@@ -175,7 +175,7 @@ namespace TiendaLitos.Service
                                TasaCambio = moneda.TasaCambio ?? default,
                                detalle = detalle
                            });
-
+            var ff = compras.ToList();
             var result = new List<Compra>();
             foreach (var item in compras)
             {
