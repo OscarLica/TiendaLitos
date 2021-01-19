@@ -27,25 +27,6 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Iva aplicable</label>
-                                <input type="number" min="0" id="Iva" class="form-control" data-venta="true" placeholder="Iva aplicable" value="10" required data-required="El campo Cliente es requerido" />
-                                <span class="text-danger" hidden id="span-Iva"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Sub total</label>
-                                <input type="text" readonly id="SubTotalVenta" class="form-control" placeholder="0.00" data-compra="true" required data-required="El campo Sub Total es requerido" />
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Total</label>
-                                <input type="text" readonly id="TotalVenta" class="form-control" placeholder="0.00" data-compra="true" required data-required="El campo Total es requerido" />
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
                                 <label>Cliente</label>
                                 <input type="text" data-venta="true" id="Cliente" class="form-control" placeholder="Cliente" required data-required="El campo Cliente es requerido" />
                                 <span class="text-danger" hidden id="span-Cliente"></span>
@@ -58,7 +39,7 @@
                                 <span class="text-danger" hidden id="span-IdTipoMoneda"></span>
                             </div>
                         </div>
-
+                        <div class="col-md-8"></div>
                     </div>
                 </div>
             </div>
@@ -86,25 +67,45 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Medida</label>
-                                    <input class="form-control" readonly id="Medida" data-inf="true" />
+                                    <input class="form-control" data-detalle="true" readonly id="Medida" data-inf="true" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Marca</label>
-                                    <input class="form-control" readonly id="Marca" data-inf="true" />
+                                    <input class="form-control" data-detalle="true" readonly id="Marca" data-inf="true" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Color</label>
-                                    <input class="form-control" readonly id="Color" data-inf="true" />
+                                    <input class="form-control" data-detalle="true" readonly id="Color" data-inf="true" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Talla</label>
-                                    <input class="form-control" readonly id="Talla" data-inf="true" />
+                                    <input class="form-control" data-detalle="true" readonly id="Talla" data-inf="true" />
+                                </div>
+                            </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Precio por Unida</label>
+                                    <input type="number" id="PrecioPorUnida" data-detalle="true" data-inf="true" min="0" data-calculate="true" class="form-control" data-detalle="true" data-only-number="true" placeholder="0.00" required data-required="El campo Precio por Unida es requerido" />
+                                    <span class="text-danger" hidden id="span-PrecioPorUnida"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Precio Venta</label>
+                                    <input type="number" data-detalle="true" readonly id="PrecioVenta" min="0" data-calculate="true" class="form-control" data-detalle="true" data-only-number="true" placeholder="0.00" required data-required="El campo Precio Venta es requerido" />
+                                    <span class="text-danger" hidden id="span-PrecioVenta"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Existencia</label>
+                                    <input type="number" data-inf="true" data-detalle="true" data-calculate="true" readonly id="Existencia" min="0" class="form-control"/>
                                 </div>
                             </div>
                         </fieldset>
@@ -125,25 +126,10 @@
                                     <span class="text-danger" hidden id="span-UdMedidaVenta"></span>
                                 </div>
                             </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Precio por Unida</label>
-                                    <input type="number" id="PrecioPorUnida" data-inf="true" min="0" data-calculate="true" class="form-control" data-detalle="true" data-only-number="true" placeholder="0.00" required data-required="El campo Precio por Unida es requerido" />
-                                    <span class="text-danger" hidden id="span-PrecioPorUnida"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Precio Venta</label>
-                                    <input type="number" data-calculate="true" id="PrecioVenta" min="0" data-calculate="true" class="form-control" data-detalle="true" data-only-number="true" placeholder="0.00" required data-required="El campo Precio Venta es requerido" />
-                                    <span class="text-danger" hidden id="span-PrecioVenta"></span>
-                                </div>
-                            </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Descuento</label>
-                                    <input type="number" data-calculate="true" id="Descuento" min="0" data-calculate="true" class="form-control" data-detalle="true" data-only-number="true" placeholder="0.00" />
+                                    <input type="number" data-detalle="true" data-calculate="true" id="Descuento" min="0" data-calculate="true" class="form-control" data-detalle="true" data-only-number="true" placeholder="0.00" />
                                     <span class="text-danger" hidden id="span-Descuento"></span>
                                 </div>
                             </div>
@@ -152,21 +138,6 @@
                                     <label>Sub Total</label>
                                     <input type="text" readonly id="SubTotalArticulo" class="form-control" data-detalle="true" placeholder="0.00" required data-required="El campo Sub total es requerido" />
                                     <span class="text-danger" hidden id="span-SubTotalArticulo"></span>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Pago</label>
-                                    <input type="text" data-calculat-cambio="true" id="Pago" class="form-control" data-detalle="true" placeholder="0.00" required data-required="El campo Pago es requerido" />
-                                    <span class="text-danger" hidden id="span-Pago"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Cambio</label>
-                                    <input type="text" readonly id="Cambio" class="form-control" data-detalle="true" placeholder="0.00" required data-required="El campo Cambio es requerido" />
-                                    <span class="text-danger" hidden id="span-Cambio"></span>
                                 </div>
                             </div>
 
@@ -186,7 +157,46 @@
                             </thead>
                             <tbody id="result"></tbody>
                         </table>
+                        <fieldset class="scheduler-border">
+                             <legend class="scheduler-border">Datos de pago
+                            </legend>
+                            <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Iva aplicable</label>
+                                <input type="number" readonly min="0" id="Iva" class="form-control" data-venta="true" placeholder="Iva aplicable" value="15" required data-required="El campo Cliente es requerido" />
+                                <span class="text-danger" hidden id="span-Iva"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Sub total</label>
+                                <input type="text" readonly id="SubTotalVenta" class="form-control" placeholder="0.00" data-compra="true" required data-required="El campo Sub Total es requerido" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Total</label>
+                                <input type="text" readonly id="TotalVenta" class="form-control" placeholder="0.00" data-compra="true" required data-required="El campo Total es requerido" />
+                            </div>
+                        </div>
+                             <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Pago</label>
+                                    <input type="text" data-calculat-cambio="true" id="Pago" class="form-control" placeholder="0.00" required data-required="El campo Pago es requerido" />
+                                    <span class="text-danger" hidden id="span-Pago"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Cambio</label>
+                                    <input type="text" readonly id="Cambio" class="form-control" placeholder="0.00" required data-required="El campo Cambio es requerido" />
+                                    <span class="text-danger" hidden id="span-Cambio"></span>
+                                </div>
+                            </div>
+                        </fieldset>
                         <button type="button" class="btn btn-primary float-right" data-save-vender="true">Vender</button>
+                        <br />
+                        <br />
                     </div>
                 </div>
             </div>

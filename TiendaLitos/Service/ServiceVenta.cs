@@ -73,6 +73,7 @@ namespace TiendaLitos.Service
                           join m in _Context.TbMedida on ad.IdMedida equals m.IdMedida
                           join ma in _Context.TbMarca on ad.IdMedida equals ma.IdMarca
                           join t in _Context.TbTalla on ad.IdTalla equals t.IdTalla
+                          join subcat in _Context.TbSubCategoria on a.IdSubCategoria equals subcat.IdSubCategoria
                           where d.IdVenta == v.IdVenta
                           select new DetVenta
                           {
@@ -85,6 +86,7 @@ namespace TiendaLitos.Service
                               Precio = d.PrecioVenta,
                               SubTotal = d.SubTotal,
                               Talla = t.NombreTalla,
+                              SubCategoria = subcat.Descripción
                           }
                             ).ToList()
                           select new Venta

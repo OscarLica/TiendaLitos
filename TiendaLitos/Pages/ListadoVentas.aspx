@@ -55,6 +55,7 @@
                         <thead>
                             <tr>
                                 <th>Articulo </th>
+                                <th>Sub categoria</th>
                                 <th>Cantidad </th>
                                 <th>Color </th>
                                 <th>Medida </th>

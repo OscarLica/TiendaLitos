@@ -137,6 +137,8 @@
     <Content Include="Content\dataTables.bootstrap4.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\toastr.css" />
+    <Content Include="Content\user-icon1.jpg" />
+    <Content Include="Content\user.png" />
     <Content Include="Context\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -160,6 +162,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Pages\ListadoVentas.aspx" />
+    <Content Include="Pages\Login.aspx" />
+    <Content Include="Pages\Logins.aspx" />
     <Content Include="Pages\Reportes.aspx" />
     <Content Include="Pages\TipoMoneda.aspx" />
     <Content Include="Scripts\bootstrap-select.min.js" />
@@ -541,6 +545,20 @@
     </Compile>
     <Compile Include="Pages\ListadoVentas.aspx.designer.cs">
       <DependentUpon>ListadoVentas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Logins.aspx.cs">
+      <DependentUpon>Logins.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Logins.aspx.designer.cs">
+      <DependentUpon>Logins.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Marca.aspx.cs">
       <DependentUpon>Marca.aspx</DependentUpon>

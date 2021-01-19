@@ -30,6 +30,6 @@ namespace CapaEntidades
         public double? Descuento { get; set; }
         public decimal? SubTotal { get; set; }
         public decimal? SubTotalLocal { get; set; }
-
+        public string SubCategoria { get; set; }
     }
 }

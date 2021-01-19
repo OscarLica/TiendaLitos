@@ -19,6 +19,22 @@
     <link href="Content/toastr.css" rel="stylesheet" />
     <link href="Scripts/dist/css/bootstrap-select.css" rel="stylesheet" />
     <link href="Content/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <style>
+        .sin-estilo {
+            background: none;
+            border: 0;
+            color: inherit;
+            /* cursor: default; */
+            font: inherit;
+            line-height: normal;
+            overflow: visible;
+            padding: 0;
+            -webkit-user-select: none; /* for button */
+            -webkit-appearance: button; /* for input */
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
@@ -66,10 +82,19 @@
                                 <li><a href="~/Pages/SubCategoria" runat="server">Sub categoria</a></li>
                                 <li><a href="~/Pages/Articulo" runat="server">Articulo</a></li>
                                 <li><a href="~/Pages/TipoMoneda" runat="server">Tipo Moneda</a></li>
-
                             </ul>
                         </li>
+                        <li>
+                            <a href="#" runat="server">
+                                <asp:Label runat="server" ID="user"></asp:Label></a>
+
+                        </li>
+                        <li>
+                            <a href="#" runat="server">
+                                <asp:Button runat="server" OnClick="Salir" CssClass="sin-estilo" Text="Salir" /></a>
+                        </li>
                     </ul>
+
                 </div>
             </div>
         </div>

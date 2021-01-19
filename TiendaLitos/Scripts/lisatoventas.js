@@ -46,7 +46,7 @@ $(function () {
 
         var row = "";
         $.each(detalleVenta.detalle, function (i, det) {
-            row += "<tr><td>" + det.Articulo + "</td><td>" + det.Cantidad + "</td><td>" + det.Color + "</td><td>" + det.Medida + "</td><td>" + det.Marca + "</td><td>" + det.Talla + "</td><td>C$" + det.Precio + "</td><td>%" + det.Descuento + "</td><td> C$" + det.SubTotal + "</td></tr>";
+            row += "<tr><td>" + det.Articulo + "</td><td>" + det.SubCategoria + "</td><td>" + det.Cantidad + "</td><td>" + det.Color + "</td><td>" + det.Medida + "</td><td>" + det.Marca + "</td><td>" + det.Talla + "</td><td>C$" + det.Precio + "</td><td>%" + det.Descuento + "</td><td> C$" + det.SubTotal + "</td></tr>";
         });
         $("#resultDetalle").html(row);
     });

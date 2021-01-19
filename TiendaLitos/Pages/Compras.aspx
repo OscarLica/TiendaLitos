@@ -2,15 +2,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="top">
-        
+
         <div class="row">
             <div class="col-md-12">
-               <nav aria-label="breadcrumb">
+                <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#" data-href="ListadoCompras">Lista de compras</a></li>
-                    <li class="breadcrumb-item"><a href="#" data-href="Compras">Formulario de compras</a></li>
-                </ol>
-               </nav>
+                        <li class="breadcrumb-item"><a href="#" data-href="ListadoCompras">Lista de compras</a></li>
+                        <li class="breadcrumb-item"><a href="#" data-href="Compras">Formulario de compras</a></li>
+                    </ol>
+                </nav>
             </div>
             <div class="col-12">
                 <div class="card shadow mb-4">
@@ -19,59 +19,61 @@
 
                     </div>
                     <div class="card-body">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Fecha</label>
-                                <input type="datetime" readonly class="form-control" id="FechaCompra" />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Fecha</label>
+                                    <input type="datetime" readonly class="form-control" id="FechaCompra" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4" hidden>
-                            <div class="form-group">
-                                <label>Factura</label>
-                                <input type="text" readonly class="form-control" placeholder="Nº de factura" />
-                            </div>
-                        </div>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Iva aplicable</label>
-                                <input type="number" id="Iva" class="form-control" placeholder="Iva aplicable" value="10" min="0" data-compra="true" required data-required="El campo Iva es requerido"/>
-                                <span class="text-danger" hidden id="span-Iva"></span>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Iva aplicable</label>
+                                    <input type="number" readonly id="Iva" class="form-control" placeholder="Iva aplicable" value="15" min="0" data-compra="true" required data-required="El campo Iva es requerido" />
+                                    <span class="text-danger" hidden id="span-Iva"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Sub total</label>
+                                    <input type="text" readonly id="SubTotalCompra" class="form-control" placeholder="0.00" data-compra="true" required data-required="El campo Sub Total es requerido" />
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Sub total</label>
-                                <input type="text" readonly id="SubTotalCompra" class="form-control" placeholder="0.00" data-compra="true" required data-required="El campo Sub Total es requerido" />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Total</label>
+                                    <input type="text" readonly id="TotalCompra" class="form-control" placeholder="0.00" data-compra="true" required data-required="El campo Total es requerido" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Total</label>
-                                <input type="text" readonly id="TotalCompra" class="form-control" placeholder="0.00" data-compra="true" required data-required="El campo Total es requerido" />
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Proveedor</label>
+                                    <select class="form-control" id="IdProveedor" data-compra="true" required data-required="El campo Proveedor es requerido"></select>
+                                    <span class="text-danger" hidden id="span-IdProveedor"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Proveedor</label>
-                                <select class="form-control" id="IdProveedor" data-compra="true" required data-required="El campo Proveedor es requerido"></select>
-                                <span class="text-danger" hidden id="span-IdProveedor"></span>
-                            </div>
-                        </div>
-                         <div class="col-md-4">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Bodega</label>
                                     <select class="form-control" id="IdBodega" data-compra="true" required data-required="El campo Bodega es requerido"></select>
                                     <span class="text-danger" hidden id="span-IdBodega"></span>
                                 </div>
                             </div>
-                        <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Tipo de moneda</label>
-                                    <select class="form-control" id="IdTipoMoneda" data-compra="true" required data-required="El campo Tipo de moneda es requerido"></select>
-                                    <span class="text-danger" hidden id="span-IdTipoMoneda"></span>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Tipo de moneda</label>
+                                <select class="form-control" id="IdTipoMoneda" data-compra="true" required data-required="El campo Tipo de moneda es requerido"></select>
+                                <span class="text-danger" hidden id="span-IdTipoMoneda"></span>
                             </div>
+                        </div>
+                        <div class="col-md-8"></div>
+                        </div>
                     </div>
                 </div>
             </div>

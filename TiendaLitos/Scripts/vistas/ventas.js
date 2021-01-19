@@ -28,6 +28,7 @@
             $(cmbArticulo).selectpicker();
         });
     }
+
     function GetAllTipoMoneda() {
         HttpClient.Get("TipoMoneda.aspx/GetAllTipoMoneda").then((response) => {
             var cmb = $("#IdTipoMoneda");
@@ -42,11 +43,14 @@
             $(cmb).selectpicker();
         });
     }
+
     $(document).on("change", "#IdArticulo", function () {
         var Id = +this.value;
         var articulo = articulos.find((r) => { return r.IdArticuloBodega === Id; });
         var controles = $("input[data-inf]");
         existenciaProducto = +articulo.Existencia;
+        $("#Existencia").val(existenciaProducto);
+        $("#PrecioVenta").val(articulo.PrecioPorUnida);
         $.each(controles, function (i, item) {
             if (!articulo) {
                 $(item).val("");
@@ -77,13 +81,6 @@
         var valido = ValidarForm(controles);
         if (!valido) {
             toastr.error("Debe completar todos los campos para agregar el articulo.");
-            return;
-        }
-
-        var pago = +$("#Pago").val();
-        var subtotal = +$("#SubTotalArticulo").val();
-        if (pago < subtotal) {
-            toastr.error("El monto de pago debe ser mayor al valor a pagar.");
             return;
         }
 
@@ -189,11 +186,13 @@
     $(document).on("change", "input[data-calculat-cambio]", function () {
 
         var pago = +this.value;
-        var subtotal = +$("#SubTotalArticulo").val();
+        var subtotal = +$("#TotalVenta").val();
         if (pago < subtotal) {
             toastr.error("El monto de pago debe ser mayor al valor a pagar.");
+            $(this).val(0);
             return;
         }
+
         var cambio = pago - subtotal;
         $("#Cambio").val(cambio);
 
@@ -219,6 +218,13 @@
         var ventavalida = ValidarForm(controlVenta);
         if (!ventavalida) {
             toastr.error('Debe completar los datos requeridos para finalizar la venta.');
+            return;
+        }
+
+        var pago = +$("#Pago").val();
+        var subtotal = +$("#TotalVenta").val();
+        if (pago < subtotal) {
+            toastr.error("El monto de pago debe ser mayor al valor a pagar.");
             return;
         }
 
@@ -251,7 +257,7 @@
     }
 
     function reload() {
-        window.location.href = "/Pages/ListadoVentas";
+        window.location.reload();
     }
     function LlenarDetalleVenta() {
         var row = "";

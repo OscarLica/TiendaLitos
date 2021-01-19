@@ -7,29 +7,38 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace TiendaLitos
+namespace TiendaLitos.Pages
 {
 
 
-    public partial class SiteMaster
+    public partial class Logins
     {
 
         /// <summary>
-        /// Control user.
+        /// Control mensaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label user;
+        protected global::System.Web.UI.WebControls.Label mensaje;
 
         /// <summary>
-        /// Control MainContent.
+        /// Control username.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.TextBox username;
+
+        /// <summary>
+        /// Control password.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox password;
     }
 }
