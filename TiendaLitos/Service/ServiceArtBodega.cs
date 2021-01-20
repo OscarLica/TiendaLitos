@@ -21,6 +21,7 @@ namespace TiendaLitos.Service
 
             var result = (from ab in _Context.TbArticuloBodega
                           join a in _Context.TbArticulo on ab.IdArticulo equals a.IdArticulo
+                          join subcat in _Context.TbSubCategoria on a.IdSubCategoria equals subcat.IdSubCategoria
                           join c in _Context.TbColor on ab.IdColor equals c.IdColor
                           join t in _Context.TbTalla on ab.IdTalla equals t.IdTalla
                           join m in _Context.TbMedida on ab.IdMedida equals m.IdMedida
@@ -36,7 +37,8 @@ namespace TiendaLitos.Service
                               Medida = m.NombreMedida,
                               Talla = t.NombreTalla,
                               Estado = a.Estado ?? default,
-                              PrecioPorUnida = ab.PrecioVenta
+                              PrecioPorUnida = ab.PrecioVenta,
+                              SubCategoria = subcat.Descripción
                           }).ToList();
 
             return result;

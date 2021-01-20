@@ -66,26 +66,32 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <label>Sub categoria</label>
+                                    <input class="form-control" readonly id="subcategoria" placeholder="Sub categoria"/>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
                                     <label>Medida</label>
-                                    <input class="form-control" data-detalle="true" readonly id="Medida" data-inf="true" />
+                                    <input class="form-control" data-detalle="true" placeholder="Unidad de medida" readonly id="Medida" data-inf="true" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Marca</label>
-                                    <input class="form-control" data-detalle="true" readonly id="Marca" data-inf="true" />
+                                    <input class="form-control" data-detalle="true" placeholder="Marca" readonly id="Marca" data-inf="true" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Color</label>
-                                    <input class="form-control" data-detalle="true" readonly id="Color" data-inf="true" />
+                                    <input class="form-control" data-detalle="true" placeholder="Color" readonly id="Color" data-inf="true" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Talla</label>
-                                    <input class="form-control" data-detalle="true" readonly id="Talla" data-inf="true" />
+                                    <input class="form-control" data-detalle="true" placeholder="Talla" readonly id="Talla" data-inf="true" />
                                 </div>
                             </div>
                               <div class="col-md-4">
@@ -105,7 +111,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Existencia</label>
-                                    <input type="number" data-inf="true" data-detalle="true" data-calculate="true" readonly id="Existencia" min="0" class="form-control"/>
+                                    <input type="number" placeholder="0" data-inf="true" data-detalle="true" data-calculate="true" readonly id="Existencia" min="0" class="form-control"/>
                                 </div>
                             </div>
                         </fieldset>

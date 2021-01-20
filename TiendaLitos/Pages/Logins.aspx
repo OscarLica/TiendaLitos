@@ -8,7 +8,7 @@
     <title></title>
     <style>
         html {
-            background-color: #56baed;
+            background-color: #501368 !important;
         }
 
         body {

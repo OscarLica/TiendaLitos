@@ -143,12 +143,13 @@ namespace TiendaLitos.Service
                            let detalle = (from de in _Context.TbDetalleCompra
                                           join ad in _Context.TbArticuloBodega on de.IdCompra equals ad.IdCompra
                                           join a in _Context.TbArticulo on ad.IdArticulo equals a.IdArticulo
+                                          join subcat in _Context.TbSubCategoria on a.IdSubCategoria equals subcat.IdSubCategoria
                                           join co in _Context.TbColor on ad.IdColor equals co.IdColor
                                           join m in _Context.TbMedida on ad.IdMedida equals m.IdMedida
                                           join ma in _Context.TbMarca on ad.IdMarca equals ma.IdMarca
                                           join t in _Context.TbTalla on ad.IdTalla equals t.IdTalla
                                           where de.IdCompra == c.IdCompra
-                                          group new {de, ad, a, co, m, ma, t} by new { a.NombreArticulo, a.IdArticulo }
+                                          group new {de, ad, a, co, m, ma, t, subcat } by new { a.NombreArticulo, a.IdArticulo }
                                           into grupo
                                           select new DetCompra
                                           {
@@ -160,7 +161,8 @@ namespace TiendaLitos.Service
                                               Color = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? "":grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).co.NombreColor,
                                               Marca = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? "" : grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).ma.NombreMarca,
                                               Talla = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? "" : grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).t.NombreTalla,
-                                              Medida = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? "" : grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).m.NombreMedida
+                                              Medida = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? "" : grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).m.NombreMedida,
+                                              SubCategoria = grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo) == null ? "" : grupo.FirstOrDefault(x => x.de.IdArticulo == grupo.Key.IdArticulo).subcat.Descripción
                                           })
                            select new Compra
                            {

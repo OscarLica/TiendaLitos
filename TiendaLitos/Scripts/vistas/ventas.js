@@ -51,6 +51,7 @@
         existenciaProducto = +articulo.Existencia;
         $("#Existencia").val(existenciaProducto);
         $("#PrecioVenta").val(articulo.PrecioPorUnida);
+        $("#subcategoria").val(articulo.SubCategoria);
         $.each(controles, function (i, item) {
             if (!articulo) {
                 $(item).val("");

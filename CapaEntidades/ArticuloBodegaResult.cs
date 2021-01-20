@@ -17,5 +17,6 @@ namespace CapaEntidades
         public string Existencia { get; set; }
         public bool Estado { get; set; }
         public double? PrecioPorUnida { get; set; }
+        public string SubCategoria { get; set; }
     }
 }

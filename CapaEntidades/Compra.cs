@@ -36,5 +36,6 @@ namespace CapaEntidades
         public double? Descuento { get; set; }
         public double? SubTotalArticulo { get; set; }
         public double? SubTotalArticuloLocal { get; set; }
+        public string SubCategoria { get; set; }
     }
 }

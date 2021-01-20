@@ -33,6 +33,13 @@
             $(cmbArticulo).selectpicker();
         });
     }
+
+    $(document).on("change", "#IdArticulo", function () {
+        var Id = +this.value;
+        var articulo = articulos.find((r) => { return r.IdArticulo === Id; });
+        $("#subcategoria").val(articulo.NombreSubCategoria);
+    });
+
     function GetAllTipoMoneda() {
         HttpClient.Get("TipoMoneda.aspx/GetAllTipoMoneda").then((response) => {
             var cmb = $("#IdTipoMoneda");

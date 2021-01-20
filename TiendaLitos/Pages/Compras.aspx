@@ -66,13 +66,13 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Tipo de moneda</label>
-                                <select class="form-control" id="IdTipoMoneda" data-compra="true" required data-required="El campo Tipo de moneda es requerido"></select>
-                                <span class="text-danger" hidden id="span-IdTipoMoneda"></span>
+                                <div class="form-group">
+                                    <label>Tipo de moneda</label>
+                                    <select class="form-control" id="IdTipoMoneda" data-compra="true" required data-required="El campo Tipo de moneda es requerido"></select>
+                                    <span class="text-danger" hidden id="span-IdTipoMoneda"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-8"></div>
+                            <div class="col-md-8"></div>
                         </div>
                     </div>
                 </div>
@@ -91,42 +91,51 @@
                             <legend class="scheduler-border">Información del articulo
                             </legend>
                             <input id="IdDetalle" hidden data-detalle="true" />
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Árticulo</label>
-                                    <select class="form-control" id="IdArticulo" data-detalle="true" required data-required="El campo Árticulo es requerido"></select>
-                                    <span class="text-danger" hidden id="span-IdArticulo"></span>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Árticulo</label>
+                                        <select class="form-control" id="IdArticulo" data-detalle="true" required data-required="El campo Árticulo es requerido"></select>
+                                        <span class="text-danger" hidden id="span-IdArticulo"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Sub categoria</label>
+                                        <input class="form-control" id="subcategoria" placeholder="Sub categoria" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Medida</label>
+                                        <select class="form-control" id="IdMedida" data-detalle="true" required data-required="El campo Medida es requerido"></select>
+                                        <span class="text-danger" hidden id="span-IdMedida"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Medida</label>
-                                    <select class="form-control" id="IdMedida" data-detalle="true" required data-required="El campo Medida es requerido"></select>
-                                    <span class="text-danger" hidden id="span-IdMedida"></span>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Marca</label>
+                                        <select class="form-control" id="IdMarca" data-detalle="true" required data-required="El campo Marca es requerido"></select>
+                                        <span class="text-danger" hidden id="span-IdMarca"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Color</label>
+                                        <select class="form-control" id="IdColor" data-detalle="true" required data-required="El campo Color es requerido"></select>
+                                        <span class="text-danger" hidden id="span-IdColor"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Talla</label>
+                                        <select class="form-control" id="IdTalla" data-detalle="true" required data-required="El campo Talla es requerido"></select>
+                                        <span class="text-danger" hidden id="span-IdTalla"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Marca</label>
-                                    <select class="form-control" id="IdMarca" data-detalle="true" required data-required="El campo Marca es requerido"></select>
-                                    <span class="text-danger" hidden id="span-IdMarca"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Color</label>
-                                    <select class="form-control" id="IdColor" data-detalle="true" required data-required="El campo Color es requerido"></select>
-                                    <span class="text-danger" hidden id="span-IdColor"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Talla</label>
-                                    <select class="form-control" id="IdTalla" data-detalle="true" required data-required="El campo Talla es requerido"></select>
-                                    <span class="text-danger" hidden id="span-IdTalla"></span>
-                                </div>
-                            </div>
-
                         </fieldset>
                         <fieldset class="scheduler-border">
                             <legend class="scheduler-border">Datos de compra

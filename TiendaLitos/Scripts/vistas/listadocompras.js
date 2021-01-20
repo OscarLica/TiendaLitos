@@ -47,7 +47,7 @@
 
         var row = "";
         $.each(detalleCompra.detalle, function (i, det) {
-            row += "<tr><td>" + det.Articulo + "</td><td>" + det.Color + "</td><td>" + det.Marca + "</td><td>" + det.Medida + "</td><td>" + det.Talla + "</td><td>" + det.Cantidad + "</td><td>C$ " + det.Precio + "</td><td>% " + det.Descuento + "</td><td>C$ " + det.SubTotalArticulo + "</td><td>C$ " + det.SubTotalArticuloLocal +"</td></tr>";
+            row += "<tr><td>" + det.Articulo + "</td><td>" + det.SubCategoria + "</td><td>" + det.Color + "</td><td>" + det.Marca + "</td><td>" + det.Medida + "</td><td>" + det.Talla + "</td><td>" + det.Cantidad + "</td><td>C$ " + det.Precio + "</td><td>% " + det.Descuento + "</td><td>C$ " + det.SubTotalArticulo + "</td><td>C$ " + det.SubTotalArticuloLocal +"</td></tr>";
         });
         $("#resultDetalle").html(row);
     });
