@@ -687,6 +687,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Reports\ReportCompras\rptCompras.rdlc" />
     <EmbeddedResource Include="Reports\ReportProductosBodega\ReportProductosBodega.rdlc" />
+    <EmbeddedResource Include="Reports\ReportVentas\ReportProductosMasVendidos.rdlc" />
     <EmbeddedResource Include="Reports\ReportVentas\ReportVentas.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

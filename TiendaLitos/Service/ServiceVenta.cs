@@ -60,6 +60,19 @@ namespace TiendaLitos.Service
             }
             return ventas;
         }
+
+        public List<ReporteProductosMasVendidos> ReportesProductosMasVendidos() {
+            var query = (from c in _Context.TbDetalleVenta
+                         join producto in _Context.TbArticulo on c.IdArticulo equals producto.IdArticulo
+                         group new { c, producto } by new { producto.IdArticulo, producto.Descripción } into grupo
+                         select new ReporteProductosMasVendidos
+                         {
+                             Producto = grupo.Key.Descripción,
+                             Cantidad = grupo.Count(),
+                             Total = grupo.Sum(x => x.c.SubTotal ?? default)
+                         }).ToList();
+            return query;
+        }
         public List<Venta> ConsultarVentas()
         {
 

@@ -58,6 +58,29 @@ namespace TiendaLitos.Pages
         }
 
         [WebMethod]
+        public static string ReporteProductosMasVendidosPdf(CapaEntidades.ReporteRequest reporteRequest)
+        {
+            Warning[] warnings;
+            string[] streamids;
+            string mimeType;
+            string encoding;
+            string filenameExtension;
+
+            var datos = ServiceVenta.ReportesProductosMasVendidos();
+            var path = "./Reports/ReportVentas/ReportProductosMasVendidos.rdlc";
+
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = path;
+            ReportDataSource ds = new ReportDataSource("DataSet1", datos);
+            localReport.DataSources.Add(ds);
+
+            byte[] bytes = localReport.Render("PDF", null, out mimeType, out filenameExtension, out encoding, out streamids, out warnings);
+            string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+
+            return base64String;
+        }
+
+        [WebMethod]
         public static List<CapaEntidades.Venta> ConsultarVentas()
         {
             return ServiceVenta.ConsultarVentas();
@@ -66,6 +89,11 @@ namespace TiendaLitos.Pages
         public static List<CapaEntidades.ReportVentas> ReportVentas()
         {
             return ServiceVenta.ReportVentas();
+        }
+        [WebMethod]
+        public static List<CapaEntidades.ReporteProductosMasVendidos> ReporteProductosMasVendidos()
+        {
+            return ServiceVenta.ReportesProductosMasVendidos();
         }
     }
 }

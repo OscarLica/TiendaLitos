@@ -17,6 +17,7 @@
                                        <option value="1">Reporte de ventas</option>
                                        <option value="2">Reporte de compras</option>
                                        <option value="3">Reporte de articulo en bodega</option>
+                                       <option value="4">Reporte de productos más vendidos</option>
                                    </select>
                                </div>
                            </div>

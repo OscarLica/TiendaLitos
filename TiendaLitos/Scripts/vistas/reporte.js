@@ -19,6 +19,9 @@
             case 3:
                 reporteArtBodega(filtro);
                 break;
+            case 4:
+                reporteProductosMasVendidos(filtro);
+                break;
         }
         
     });
@@ -27,6 +30,20 @@
 
     function reporteVentas(filtro) {
         HttpClient.Post("ListadoVentas.aspx/ReporteVentas", JSON.stringify({ reporteRequest: filtro })).then((response) => {
+            var byte = response.d.replace(/['"]+/g, '');
+
+            var src = "data:application/pdf;base64," + byte;
+
+            var embed = $("#embedReporte");
+
+            document.getElementById("embedReporte").src = src;
+
+            $(embed).show();
+            $("#reporte-avance-procesos").show();
+        });
+    }
+    function reporteProductosMasVendidos(filtro) {
+        HttpClient.Post("ListadoVentas.aspx/ReporteProductosMasVendidosPdf", JSON.stringify({ reporteRequest: filtro })).then((response) => {
             var byte = response.d.replace(/['"]+/g, '');
 
             var src = "data:application/pdf;base64," + byte;
