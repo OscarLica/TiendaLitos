@@ -70,7 +70,7 @@ namespace TiendaLitos.Service
                              Producto = grupo.Key.Descripción,
                              Cantidad = grupo.Count(),
                              Total = grupo.Sum(x => x.c.SubTotal ?? default)
-                         }).ToList();
+                         }).OrderByDescending(x => x.Cantidad).ToList();
             return query;
         }
         public List<Venta> ConsultarVentas()
