@@ -68,7 +68,7 @@ namespace TiendaLitos.Service
                          select new ReporteProductosMasVendidos
                          {
                              Producto = grupo.Key.Descripción,
-                             Cantidad = grupo.Count(),
+                             Cantidad = (int)grupo.Sum(x => x.c.Cantidad),
                              Total = grupo.Sum(x => x.c.SubTotal ?? default)
                          }).OrderByDescending(x => x.Cantidad).ToList();
             return query;
